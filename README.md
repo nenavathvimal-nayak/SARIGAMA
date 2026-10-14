@@ -4,7 +4,10 @@
     <b>Transform text descriptions, emotions, and lyrics into studio-quality musical compositions.</b>
 </p>
 <p align="center">
-    <a href="https://github.com/nenavathvimal-nayak/SARIGAMA">GitHub</a> |
+    <img src="./assets/sarigama_banner.svg" width="100%" alt="SARIGAMA — AI Music Platform">
+</p>
+<p align="center">
+    <a href="https://github.com/nenavathvimal-nayak/SARIGAMA">GitHub Repository</a> |
     <a href="https://huggingface.co/ACE-Step/Ace-Step1.5">Model Weights</a> |
     <a href="#-quick-start">Quick Start</a> |
     <a href="#-features">Features</a> |

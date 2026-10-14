@@ -1,10 +1,10 @@
 import { defineConfig } from 'vitepress'
 
 export default defineConfig({
-  title: 'ACE-Step 1.5',
-  description: 'Open-Source Music Generation Foundation Model',
+  title: 'SARIGAMA',
+  description: 'AI-Powered Music Creation and Production Platform',
 
-  base: '/ACE-Step-1.5/',
+  base: '/SARIGAMA/',
   lastUpdated: true,
   cleanUrls: true,
   ignoreDeadLinks: [
@@ -17,10 +17,10 @@ export default defineConfig({
   ],
 
   head: [
-    ['link', { rel: 'icon', type: 'image/svg+xml', href: '/ACE-Step-1.5/favicon.svg' }],
+    ['link', { rel: 'icon', type: 'image/svg+xml', href: '/SARIGAMA/favicon.svg' }],
     ['meta', { name: 'og:type', content: 'website' }],
-    ['meta', { name: 'og:title', content: 'ACE-Step 1.5 Documentation' }],
-    ['meta', { name: 'og:description', content: 'Open-Source Music Generation Foundation Model' }],
+    ['meta', { name: 'og:title', content: 'SARIGAMA Documentation' }],
+    ['meta', { name: 'og:description', content: 'AI-Powered Music Creation and Production Platform' }],
   ],
 
   locales: {
@@ -43,7 +43,7 @@ export default defineConfig({
         outline: { label: '页面导航' },
         lastUpdated: { text: '最后更新于' },
         docFooter: { prev: '上一页', next: '下一页' },
-        editLink: { pattern: 'https://github.com/ace-step/ACE-Step-1.5/edit/main/docs/:path', text: '在 GitHub 上编辑此页面' },
+        editLink: { pattern: 'https://github.com/nenavathvimal-nayak/SARIGAMA/edit/main/docs/:path', text: '在 GitHub 上编辑此页面' },
       },
     },
     ja: {
@@ -56,7 +56,7 @@ export default defineConfig({
         outline: { label: 'ページナビ' },
         lastUpdated: { text: '最終更新' },
         docFooter: { prev: '前へ', next: '次へ' },
-        editLink: { pattern: 'https://github.com/ace-step/ACE-Step-1.5/edit/main/docs/:path', text: 'GitHub でこのページを編集' },
+        editLink: { pattern: 'https://github.com/nenavathvimal-nayak/SARIGAMA/edit/main/docs/:path', text: 'GitHub でこのページを編集' },
       },
     },
     ko: {
@@ -69,17 +69,16 @@ export default defineConfig({
         outline: { label: '페이지 탐색' },
         lastUpdated: { text: '마지막 업데이트' },
         docFooter: { prev: '이전', next: '다음' },
-        editLink: { pattern: 'https://github.com/ace-step/ACE-Step-1.5/edit/main/docs/:path', text: 'GitHub에서 이 페이지 편집' },
+        editLink: { pattern: 'https://github.com/nenavathvimal-nayak/SARIGAMA/edit/main/docs/:path', text: 'GitHub에서 이 페이지 편집' },
       },
     },
   },
 
   themeConfig: {
-    logo: '/logo.png',
+    logo: '/logo.svg',
 
     socialLinks: [
-      { icon: 'github', link: 'https://github.com/ace-step/ACE-Step-1.5' },
-      { icon: 'discord', link: 'https://discord.gg/PeWDxrkdj7' },
+      { icon: 'github', link: 'https://github.com/nenavathvimal-nayak/SARIGAMA' },
     ],
 
     search: {
@@ -87,13 +86,13 @@ export default defineConfig({
     },
 
     editLink: {
-      pattern: 'https://github.com/ace-step/ACE-Step-1.5/edit/main/docs/:path',
+      pattern: 'https://github.com/nenavathvimal-nayak/SARIGAMA/edit/main/docs/:path',
       text: 'Edit this page on GitHub',
     },
 
     footer: {
       message: 'Released under the MIT License.',
-      copyright: 'Copyright 2025-present ACE-Step Team',
+      copyright: 'Copyright 2026 SARIGAMA Contributors. Core engine powered by ACE-Step (MIT License).',
     },
   },
 })

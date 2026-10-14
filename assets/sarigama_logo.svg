@@ -1,0 +1,73 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 580 120" width="100%" height="100%">
+  <defs>
+    <linearGradient id="logoBgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0F172A" />
+      <stop offset="100%" stop-color="#030712" />
+    </linearGradient>
+    <linearGradient id="logoWaveGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#38BDF8" />
+      <stop offset="35%" stop-color="#818CF8" />
+      <stop offset="70%" stop-color="#C084FC" />
+      <stop offset="100%" stop-color="#F43F5E" />
+    </linearGradient>
+    <linearGradient id="textGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#FFFFFF" />
+      <stop offset="60%" stop-color="#F8FAFC" />
+      <stop offset="100%" stop-color="#E2E8F0" />
+    </linearGradient>
+    <filter id="logoGlow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="4" result="blur" />
+      <feComposite in="SourceGraphic" in2="blur" operator="over" />
+    </filter>
+  </defs>
+
+  <!-- Left Icon Emblem -->
+  <g transform="translate(10, 10)">
+    <rect width="100" height="100" rx="26" fill="url(#logoBgGrad)" stroke="#334155" stroke-width="1.5" />
+    <circle cx="50" cy="50" r="38" fill="none" stroke="#6366F1" stroke-width="1" stroke-opacity="0.3" stroke-dasharray="2 4" />
+    
+    <!-- Fluid Musical S-Curve -->
+    <path d="M 70 32 
+             C 62 23, 38 22, 34 36 
+             C 30 49, 70 51, 66 66 
+             C 62 81, 38 82, 30 72"
+          fill="none"
+          stroke="url(#logoWaveGrad)"
+          stroke-width="9"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          filter="url(#logoGlow)" />
+
+    <path d="M 68 35 
+             C 61 28, 41 27, 37 38 
+             C 34 48, 67 50, 64 63 
+             C 61 74, 41 76, 34 69"
+          fill="none"
+          stroke="#FFFFFF"
+          stroke-width="2"
+          stroke-linecap="round"
+          opacity="0.85" />
+    
+    <circle cx="70" cy="32" r="4" fill="#38BDF8" />
+    <circle cx="30" cy="72" r="4" fill="#F43F5E" />
+  </g>
+
+  <!-- Typography -->
+  <!-- Product Brand Name -->
+  <text x="135" y="65" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Inter', sans-serif" font-size="44" font-weight="900" letter-spacing="4" fill="url(#textGrad)">
+    SARIGAMA
+  </text>
+
+  <!-- Badge / Subtitle -->
+  <g transform="translate(450, 38)">
+    <rect x="0" y="0" width="80" height="22" rx="11" fill="#1E1B4B" stroke="#6366F1" stroke-width="1" />
+    <text x="40" y="15" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="11" font-weight="700" fill="#A5B4FC" text-anchor="middle">
+      AI MUSIC
+    </text>
+  </g>
+
+  <!-- Tagline -->
+  <text x="136" y="93" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="14" font-weight="500" fill="#94A3B8" letter-spacing="0.5">
+    AI-Powered Music Creation and Production Platform
+  </text>
+</svg>

@@ -1,12 +1,12 @@
 # =============================================================================
-# ACE-Step 1.5 — Generic CUDA Dockerfile
+# SARIGAMA — Generic CUDA Dockerfile
 # =============================================================================
 #
-# Builds ACE-Step 1.5 for x86_64 Linux servers with NVIDIA GPUs.
+# Builds SARIGAMA for x86_64 Linux servers with NVIDIA GPUs.
 # Uses uv for fast, reproducible dependency installation.
 #
 # Build:
-#   docker build -t acestep .
+#   docker build -t sarigama .
 #
 # Run (Gradio UI — default):
 #   docker run --gpus all -it --rm \

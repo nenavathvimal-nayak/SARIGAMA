@@ -1,0 +1,65 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" width="100%" height="100%">
+  <defs>
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0F172A" />
+      <stop offset="50%" stop-color="#1E1B4B" />
+      <stop offset="100%" stop-color="#020617" />
+    </linearGradient>
+    <linearGradient id="sWaveGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#38BDF8" />
+      <stop offset="35%" stop-color="#818CF8" />
+      <stop offset="70%" stop-color="#C084FC" />
+      <stop offset="100%" stop-color="#F43F5E" />
+    </linearGradient>
+    <linearGradient id="glowGrad" x1="0%" y1="100%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#06B6D4" stop-opacity="0.8" />
+      <stop offset="100%" stop-color="#A855F7" stop-opacity="0.8" />
+    </linearGradient>
+    <filter id="glowFilter" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="6" result="blur" />
+      <feComposite in="SourceGraphic" in2="blur" operator="over" />
+    </filter>
+  </defs>
+
+  <!-- Background rounded squircle -->
+  <rect x="10" y="10" width="180" height="180" rx="44" fill="url(#bgGrad)" stroke="#334155" stroke-width="2" />
+
+  <!-- Background decorative harmonic sound ring -->
+  <circle cx="100" cy="100" r="70" fill="none" stroke="url(#glowGrad)" stroke-width="1.5" stroke-dasharray="3 6" opacity="0.4" />
+  <circle cx="100" cy="100" r="82" fill="none" stroke="#6366F1" stroke-width="1" stroke-opacity="0.2" />
+
+  <!-- Equalizer / Swara spectrum bars (Sa Re Ga Ma Pa Dha Ni) -->
+  <g opacity="0.35">
+    <line x1="45" y1="100" x2="45" y2="120" stroke="#38BDF8" stroke-width="3" stroke-linecap="round" />
+    <line x1="55" y1="90" x2="55" y2="130" stroke="#38BDF8" stroke-width="3" stroke-linecap="round" />
+    <line x1="145" y1="85" x2="145" y2="135" stroke="#C084FC" stroke-width="3" stroke-linecap="round" />
+    <line x1="155" y1="95" x2="155" y2="125" stroke="#F43F5E" stroke-width="3" stroke-linecap="round" />
+  </g>
+
+  <!-- Fluid Musical 'S' Glyph / Clef Waveform -->
+  <path d="M 140 62 
+           C 125 45, 75 42, 68 70 
+           C 62 95, 138 98, 132 128 
+           C 126 156, 75 158, 60 140"
+        fill="none"
+        stroke="url(#sWaveGrad)"
+        stroke-width="16"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        filter="url(#glowFilter)" />
+
+  <!-- Internal Harmonic Frequency Beam -->
+  <path d="M 136 68 
+           C 122 55, 82 52, 75 74 
+           C 70 94, 132 98, 127 122 
+           C 122 144, 82 148, 68 134"
+        fill="none"
+        stroke="#FFFFFF"
+        stroke-width="4"
+        stroke-linecap="round"
+        opacity="0.9" />
+
+  <!-- Musical Note Accent Nodes -->
+  <circle cx="140" cy="62" r="7" fill="#38BDF8" />
+  <circle cx="60" cy="140" r="7" fill="#F43F5E" />
+</svg>

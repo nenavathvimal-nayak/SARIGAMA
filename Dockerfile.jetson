@@ -1,8 +1,8 @@
 # =============================================================================
-# ACE-Step 1.5 — NVIDIA Jetson Dockerfile
+# SARIGAMA — NVIDIA Jetson Dockerfile
 # =============================================================================
 #
-# Builds ACE-Step 1.5 with GPU acceleration for NVIDIA Jetson platforms.
+# Builds SARIGAMA with GPU acceleration for NVIDIA Jetson platforms.
 #
 # Supported hardware:
 #   - Jetson Orin Nano  (4/8 GB unified memory)
@@ -16,7 +16,7 @@
 #   - Docker with BuildKit (Docker >= 20.10)
 #
 # Build:
-#   docker build -f Dockerfile.jetson -t acestep-jetson .
+#   docker build -f Dockerfile.jetson -t sarigama-jetson .
 #
 # Run (Gradio UI — default, models pre-loaded at startup):
 #   docker run --runtime nvidia -it --rm \
