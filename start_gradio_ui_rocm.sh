@@ -243,7 +243,7 @@ print(f'HIP: {hip}' if hip else 'WARNING: Not a ROCm build')
 fi
 echo
 
-echo "Starting ACE-Step Gradio Web UI..."
+echo "Starting SARIGAMA Gradio Web UI..."
 echo "Server will be available at: http://${SERVER_NAME}:${PORT}"
 echo
 

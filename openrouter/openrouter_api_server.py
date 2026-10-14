@@ -54,7 +54,7 @@ from acestep.constants import TASK_INSTRUCTIONS
 # =============================================================================
 
 MODEL_ID = "acemusic/acestep-v15-turbo"
-MODEL_NAME = "ACE-Step"
+MODEL_NAME = "SARIGAMA"
 MODEL_CREATED = 1706688000  # Unix timestamp
 
 # Pricing (USD per token/unit) - adjust as needed
@@ -594,7 +594,7 @@ def create_app() -> FastAPI:
             executor.shutdown(wait=False, cancel_futures=True)
     
     app = FastAPI(
-        title="ACE-Step OpenRouter API",
+        title="SARIGAMA OpenRouter API",
         version="1.0",
         description="OpenRouter-compatible API for text-to-music generation",
         lifespan=lifespan,
@@ -1128,7 +1128,7 @@ def create_app() -> FastAPI:
         """Health check endpoint."""
         return {
             "status": "ok",
-            "service": "ACE-Step OpenRouter API",
+            "service": "SARIGAMA OpenRouter API",
             "version": "1.0",
         }
 
@@ -1143,7 +1143,7 @@ def main() -> None:
     """Run the server."""
     import uvicorn
     
-    parser = argparse.ArgumentParser(description="ACE-Step OpenRouter API server")
+    parser = argparse.ArgumentParser(description="SARIGAMA OpenRouter API server")
     parser.add_argument(
         "--host",
         default=os.getenv("OPENROUTER_HOST", "127.0.0.1"),

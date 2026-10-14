@@ -198,7 +198,7 @@ if !ERRORLEVEL! NEQ 0 (
 )
 echo.
 
-echo Starting ACE-Step Gradio Web UI...
+echo Starting SARIGAMA Gradio Web UI...
 echo Server will be available at: http://%SERVER_NAME%:%PORT%
 echo Default Model: acestep-v15-turbo
 echo LM Model: acestep-5Hz-lm-4B (with CPU offload)

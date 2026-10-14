@@ -113,7 +113,7 @@ _startup_update_check() {
 }
 _startup_update_check
 
-echo "Starting ACE-Step REST API Server..."
+echo "Starting SARIGAMA REST API Server..."
 echo "API will be available at: http://${HOST}:${PORT}"
 echo "API Documentation: http://${HOST}:${PORT}/docs"
 echo
@@ -244,7 +244,7 @@ fi
 
 _ensure_legacy_nvidia_torch_compat
 
-echo "Starting ACE-Step API Server..."
+echo "Starting SARIGAMA API Server..."
 echo
 
 # Build command with optional parameters

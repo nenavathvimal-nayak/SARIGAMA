@@ -1,4 +1,5 @@
 {
+  "name": "sarigama",
   "private": true,
   "scripts": {
     "docs:fetch": "node scripts/fetch-awesome.mjs",

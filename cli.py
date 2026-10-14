@@ -660,7 +660,7 @@ def run_wizard(args, configure_only: bool = False, default_config_path: Optional
     """
     Runs an interactive wizard to set generation parameters.
     """
-    print("Welcome to the ACE-Step Music Generation Wizard!")
+    print("Welcome to the SARIGAMA Music Generation Wizard!")
     print("This will guide you through creating your music.")
     print("Press Ctrl+C at any time to exit.")
     print("Note: Required models will be auto-downloaded if missing.")
@@ -1033,7 +1033,7 @@ def main():
     config_defaults = GenerationConfig()
 
     parser = argparse.ArgumentParser(
-        description="ACE-Step 1.5: Music generation (wizard/config only).",
+        description="SARIGAMA: Next-Generation Music Generation (wizard/config only).",
         formatter_class=argparse.ArgumentDefaultsHelpFormatter
     )
     parser.add_argument("-c", "--config", type=str, help="Path to a TOML configuration file to load.")
@@ -1344,7 +1344,7 @@ def main():
     if args.backend not in {"vllm", "pt", "mlx"}:
         args.backend = "vllm"
 
-    print("Initializing ACE-Step handlers...")
+    print("Initializing SARIGAMA handlers...")
     dit_handler = AceStepHandler()
     llm_handler = LLMHandler()
 

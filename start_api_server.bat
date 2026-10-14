@@ -115,7 +115,7 @@ echo.
 
 :SkipUpdateCheck
 
-echo Starting ACE-Step REST API Server...
+echo Starting SARIGAMA REST API Server...
 echo API will be available at: http://%HOST%:%PORT%
 echo API Documentation: http://%HOST%:%PORT%/docs
 echo.
@@ -273,7 +273,7 @@ if exist "%~dp0python_embedded\python.exe" (
     call :EnsureLegacyNvidiaTorchCompat
     if !ERRORLEVEL! NEQ 0 exit /b !ERRORLEVEL!
 
-    echo Starting ACE-Step API Server...
+    echo Starting SARIGAMA API Server...
     echo.
 
     REM Build command with optional parameters

@@ -200,7 +200,7 @@ _startup_update_check() {
 }
 _startup_update_check
 
-echo "Starting ACE-Step Gradio Web UI..."
+echo "Starting SARIGAMA Gradio Web UI..."
 echo "Server will be available at: http://${SERVER_NAME}:${PORT}"
 echo
 
@@ -361,7 +361,7 @@ fi
 
 _ensure_legacy_nvidia_torch_compat
 
-echo "Starting ACE-Step Gradio UI..."
+echo "Starting SARIGAMA Gradio UI..."
 echo
 
 # Build command with optional parameters

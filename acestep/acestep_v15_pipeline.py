@@ -208,7 +208,7 @@ def main():
     get_i18n()
 
     parser = argparse.ArgumentParser(
-        description="Gradio Demo for ACE-Step V1.5",
+        description="Gradio Demo for SARIGAMA",
         formatter_class=argparse.RawTextHelpFormatter,
     )
     parser.add_argument(

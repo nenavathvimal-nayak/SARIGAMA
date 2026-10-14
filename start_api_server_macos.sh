@@ -176,7 +176,7 @@ if [[ -f "$SCRIPT_DIR/python_embedded/bin/python3.11" ]]; then
             fi
         fi
 
-        echo "Starting ACE-Step API Server..."
+        echo "Starting SARIGAMA API Server..."
         echo
 
         # Build command with optional parameters
@@ -274,7 +274,7 @@ if [[ ! -d "$SCRIPT_DIR/.venv" ]]; then
     echo
 fi
 
-echo "Starting ACE-Step API Server (MLX backend)..."
+echo "Starting SARIGAMA API Server (MLX backend)..."
 echo
 
 # Build command with optional parameters

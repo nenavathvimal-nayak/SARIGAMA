@@ -1,6 +1,6 @@
 # AGENTS.md
 
-Guidance for AI coding agents working in `ace-step/ACE-Step-1.5`.
+Guidance for AI coding agents working in `SARIGAMA` (`nenavathvimal-nayak/SARIGAMA`).
 
 This document is aligned with the intent from:
 - Discussion #408: functional decomposition to reduce risk from large mixed-responsibility files.

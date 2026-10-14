@@ -437,7 +437,7 @@ if [[ ! -d "$SCRIPT_DIR/.venv" ]]; then
     echo
 fi
 
-echo "Starting ACE-Step Gradio UI (MLX backend)..."
+echo "Starting SARIGAMA Gradio UI (MLX backend)..."
 echo
 
 # Build command with optional parameters

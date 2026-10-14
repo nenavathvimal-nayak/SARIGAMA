@@ -138,7 +138,7 @@ echo.
 
 :SkipUpdateCheck
 
-echo Starting ACE-Step Gradio Web UI...
+echo Starting SARIGAMA Gradio Web UI...
 echo Server will be available at: http://%SERVER_NAME%:%PORT%
 echo.
 
@@ -301,7 +301,7 @@ if exist "%~dp0python_embedded\python.exe" (
         echo.
     )
 
-    echo Starting ACE-Step Gradio UI...
+    echo Starting SARIGAMA Gradio UI...
     echo.
 
     REM Build command with optional parameters

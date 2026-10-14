@@ -184,7 +184,7 @@ if !ERRORLEVEL! NEQ 0 (
 )
 echo.
 
-echo Starting ACE-Step Gradio Web UI...
+echo Starting SARIGAMA Gradio Web UI...
 echo Server will be available at: http://%SERVER_NAME%:%PORT%
 if defined CONFIG_PATH_DISPLAY echo DiT Model: %CONFIG_PATH_DISPLAY%
 if defined LM_MODEL_PATH_DISPLAY echo LM Model: %LM_MODEL_PATH_DISPLAY%
@@ -395,6 +395,6 @@ echo LM Model:     %LM_MODEL_PATH_DISPLAY%
 echo CPU Offload:  %OFFLOAD_DISPLAY%
 echo Update Check: %CHECK_UPDATE%
 echo.
-echo Starting ACE-Step with these settings...
+echo Starting SARIGAMA with these settings...
 echo.
 exit /b 0

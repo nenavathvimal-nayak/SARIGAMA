@@ -270,7 +270,7 @@ if [[ -f "$SCRIPT_DIR/python_embedded/bin/python3.11" ]]; then
             fi
         fi
 
-        echo "Starting ACE-Step Gradio UI..."
+        echo "Starting SARIGAMA Gradio UI..."
         echo
 
         # Build command with optional parameters
@@ -383,7 +383,7 @@ if [[ ! -d "$SCRIPT_DIR/.venv" ]]; then
     echo
 fi
 
-echo "Starting ACE-Step Gradio UI (MLX backend)..."
+echo "Starting SARIGAMA Gradio UI (MLX backend)..."
 echo
 
 # Build command with optional parameters

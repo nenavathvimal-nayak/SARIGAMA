@@ -1,29 +1,20 @@
-<h1 align="center">ACE-Step 1.5</h1>
-<h1 align="center">Pushing the Boundaries of Open-Source Music Generation</h1>
+<h1 align="center">🎵 SARIGAMA</h1>
+<h3 align="center">Pushing the Boundaries of Open-Source AI Music Generation</h3>
 <p align="center">
-    <a href="https://acemusic.ai">ACEMusic</a> |
-    <a href="https://ace-step.github.io/ace-step-v1.5.github.io/">Project</a> |
-    <a href="https://huggingface.co/ACE-Step/Ace-Step1.5">Hugging Face</a> |
-    <a href="https://modelscope.cn/models/ACE-Step/Ace-Step1.5">ModelScope</a> |
-    <a href="https://huggingface.co/spaces/ACE-Step/Ace-Step-v1.5">Space Demo</a> |
-    <a href="https://discord.gg/PeWDxrkdj7">Discord</a> |
-    <a href="https://arxiv.org/abs/2602.00744">Technical Report</a> |
-    <a href="https://github.com/ace-step/awesome-ace-step">Awesome ACE-Step</a>
+    <b>Transform text descriptions, emotions, and lyrics into studio-quality musical compositions.</b>
 </p>
-
 <p align="center">
-    <img src="./assets/organization_logos.png" height="80" alt="StepFun Logo" style="vertical-align: middle;">
-    &nbsp;&nbsp;
-    <a href="https://acemusic.ai">
-        <img src="./assets/acemusic-logo.svg" height="57" alt="ACEMusic - Try ACE-Step Online" style="vertical-align: middle; position: relative; top: 2px;">
-    </a>
+    <a href="https://github.com/nenavathvimal-nayak/SARIGAMA">GitHub</a> |
+    <a href="https://huggingface.co/ACE-Step/Ace-Step1.5">Model Weights</a> |
+    <a href="#-quick-start">Quick Start</a> |
+    <a href="#-features">Features</a> |
+    <a href="#-model-zoo">Model Zoo</a> |
+    <a href="#-documentation">Documentation</a>
 </p>
 
 ## 📰 News
 
-> 🎵 **Want a faster & more stable experience? Try [acemusic.ai](https://acemusic.ai) — 100% free!**
-
-- **[2026-04-02] 🎉 ACE-Step 1.5 XL (4B DiT) Released!** — We introduce the XL series with a 4B-parameter DiT decoder for higher audio quality. Three variants available: [xl-base](https://huggingface.co/ACE-Step/acestep-v15-xl-base), [xl-sft](https://huggingface.co/ACE-Step/acestep-v15-xl-sft), [xl-turbo](https://huggingface.co/ACE-Step/acestep-v15-xl-turbo). Requires ≥12GB VRAM (with offload), ≥20GB recommended. All LM models fully compatible. See [Model Zoo](#-model-zoo) for details.
+- **🎉 SARIGAMA Released!** — Introducing SARIGAMA, an advanced open-source AI music generation foundation model bringing commercial-grade music creation to local GPUs. Features full song generation from text & lyrics, style reference audio, cover generation, audio repainting, stem extraction, and customizable LoRA training.
 
 ## Table of Contents
 
@@ -38,11 +29,11 @@
 - [🔬 Benchmark](#-benchmark)
 
 ## 📝 Abstract
-🚀 We present ACE-Step v1.5, a highly efficient open-source music foundation model that brings commercial-grade generation to consumer hardware. On commonly used evaluation metrics, ACE-Step v1.5 achieves quality beyond most commercial music models while remaining extremely fast—under 2 seconds per full song on an A100 and under 10 seconds on an RTX 3090. The model runs locally with less than 4GB of VRAM, and supports lightweight personalization: users can train a LoRA from just a few songs to capture their own style.
+🚀 We present **SARIGAMA**, a next-generation open-source music foundation model (built upon the cutting-edge ACE-Step architecture) that brings commercial-grade AI music generation to consumer hardware. On commonly used evaluation metrics, SARIGAMA achieves quality beyond most commercial music models while remaining extremely fast—under 2 seconds per full song on an A100 and under 10 seconds on an RTX 3090. The model runs locally with less than 4GB of VRAM, and supports lightweight personalization: users can train a LoRA from just a few songs to capture their own style.
 
 🌉 At its core lies a novel hybrid architecture where the Language Model (LM) functions as an omni-capable planner: it transforms simple user queries into comprehensive song blueprints—scaling from short loops to 10-minute compositions—while synthesizing metadata, lyrics, and captions via Chain-of-Thought to guide the Diffusion Transformer (DiT). ⚡ Uniquely, this alignment is achieved through intrinsic reinforcement learning relying solely on the model's internal mechanisms, thereby eliminating the biases inherent in external reward models or human preferences. 🎚️
 
-🔮 Beyond standard synthesis, ACE-Step v1.5 unifies precise stylistic control with versatile editing capabilities—such as cover generation, repainting, and vocal-to-BGM conversion—while maintaining strict adherence to prompts across 50+ languages. This paves the way for powerful tools that seamlessly integrate into the creative workflows of music artists, producers, and content creators. 🎸
+🔮 Beyond standard synthesis, SARIGAMA unifies precise stylistic control with versatile editing capabilities—such as cover generation, repainting, and vocal-to-BGM conversion—while maintaining strict adherence to prompts across 50+ languages. This paves the way for powerful tools that seamlessly integrate into the creative workflows of music artists, producers, and content creators. 🎸
 
 
 ## ✨ Features
@@ -80,7 +71,7 @@
 | ✅ Quality Scoring | Automatic quality assessment for generated audio |
 
 ## 🔔 Staying ahead
-Star ACE-Step on GitHub and be instantly notified of new releases
+Star SARIGAMA on GitHub and be instantly notified of new releases
 ![](assets/star.gif)
 
 ## 🤝 Partners
@@ -95,8 +86,6 @@ Star ACE-Step on GitHub and be instantly notified of new releases
 
 ## ⚡ Quick Start
 
-> 🎵 **Don't want to install locally? Try [acemusic.ai](https://acemusic.ai) — 100% free, no GPU required!**
-
 > **Requirements:** Python 3.11-3.12, CUDA GPU recommended (also supports MPS / ROCm / Intel XPU / CPU)
 > 
 > **Note:** ROCm on Windows requires Python 3.12 (AMD officially provides Python 3.12 wheels only)
@@ -107,15 +96,17 @@ curl -LsSf https://astral.sh/uv/install.sh | sh          # macOS / Linux
 # powershell -ExecutionPolicy ByPass -c "irm https://astral.sh/uv/install.ps1 | iex"  # Windows
 
 # 2. Clone & install
-git clone https://github.com/ACE-Step/ACE-Step-1.5.git
-cd ACE-Step-1.5
+git clone https://github.com/nenavathvimal-nayak/SARIGAMA.git
+cd SARIGAMA
 uv sync
 
 # 3. Launch Gradio UI (models auto-download on first run)
-uv run acestep
+uv run sarigama
+# or: uv run acestep
 
 # Or launch REST API server
-uv run acestep-api
+uv run sarigama-api
+# or: uv run acestep-api
 ```
 
 Open http://localhost:7860 (Gradio) or http://localhost:8001 (API).
@@ -325,4 +316,3 @@ If you find this project useful for your research, please consider citing:
 	note={GitHub repository}
 }
 ```
-# SARIGAMA

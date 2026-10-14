@@ -1,7 +1,7 @@
 [project]
-name = "ace-step"
+name = "sarigama"
 version = "1.5.0"
-description = "ACE-Step 1.5"
+description = "SARIGAMA: Next-Generation Open-Source Music Generation Foundation Model"
 readme = "README.md"
 requires-python = ">=3.11,<3.13"
 license = {text = "MIT"}
@@ -95,6 +95,10 @@ torchaudio = [
 ]
 
 [project.scripts]
+sarigama = "acestep.acestep_v15_pipeline:main"
+sarigama-api = "acestep.api_server:main"
+sarigama-download = "acestep.model_downloader:main"
+sarigama-openrouter = "openrouter.openrouter_api_server:main"
 acestep = "acestep.acestep_v15_pipeline:main"
 acestep-api = "acestep.api_server:main"
 acestep-download = "acestep.model_downloader:main"

@@ -314,7 +314,7 @@ def create_app() -> FastAPI:
                 executor=executor,
             )
 
-    app = FastAPI(title="ACE-Step API", version="1.0", lifespan=lifespan)
+    app = FastAPI(title="SARIGAMA API", version="1.5.0", lifespan=lifespan)
 
     configure_api_routes(
         app=app,
