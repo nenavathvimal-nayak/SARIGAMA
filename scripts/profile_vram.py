@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-VRAM Profiling Script for ACE-Step 1.5
+VRAM Profiling Script for SARIGAMA
 
 Measures actual GPU memory consumption of each model component at different
 configurations. Results are used to calibrate the empirical VRAM constants
@@ -429,7 +429,7 @@ def profile_lm(checkpoint_dir: str, lm_models: Optional[List[str]] = None) -> Di
 
 
 def main():
-    parser = argparse.ArgumentParser(description="VRAM Profiling for ACE-Step 1.5")
+    parser = argparse.ArgumentParser(description="VRAM Profiling for SARIGAMA")
     parser.add_argument("--component", type=str, default="all",
                        choices=["all", "cuda_context", "dit", "vae", "text_encoder", "lm"],
                        help="Component to profile (default: all)")
@@ -460,7 +460,7 @@ def main():
     total_mem = torch.cuda.get_device_properties(0).total_memory / (1024**3)
     
     print("=" * 60)
-    print("ACE-Step 1.5 VRAM Profiler")
+    print("SARIGAMA VRAM Profiler")
     print("=" * 60)
     print(f"  GPU: {device_name}")
     print(f"  Total VRAM: {total_mem:.2f} GB")

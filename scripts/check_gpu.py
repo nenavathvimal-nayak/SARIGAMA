@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-GPU Detection Diagnostic Tool for ACE-Step
+GPU Detection Diagnostic Tool for SARIGAMA
 
 This script helps diagnose GPU detection issues by checking:
 - PyTorch installation and build type (CUDA/ROCm/CPU)
@@ -191,9 +191,9 @@ def check_nvidia_setup():
         print("❌ PyTorch not installed")
 
 
-def check_ace_step_env():
-    """Check ACE-Step specific environment variables."""
-    print_section("ACE-Step Environment Variables")
+def check_sarigama_env():
+    """Check SARIGAMA specific environment variables."""
+    print_section("SARIGAMA Environment Variables")
     
     relevant_vars = [
         'MAX_CUDA_VRAM',
@@ -211,7 +211,10 @@ def check_ace_step_env():
             found_any = True
     
     if not found_any:
-        print("  No ACE-Step specific environment variables set")
+        print("  No SARIGAMA specific environment variables set")
+
+# Backward compatibility alias
+check_ace_step_env = check_sarigama_env
 
 
 def print_recommendations():
@@ -227,7 +230,7 @@ def print_recommendations():
         
         if is_available:
             print("✓ Your GPU setup appears to be working correctly!")
-            print("\nYou can now run ACE-Step with GPU acceleration.")
+            print("\nYou can now run SARIGAMA with GPU acceleration.")
         elif is_rocm:
             print("❌ ROCm build detected but GPU not available")
             print("\nTroubleshooting steps for AMD GPUs:")
@@ -263,7 +266,7 @@ def print_recommendations():
 def main():
     """Main diagnostic routine."""
     print("=" * HEADER_WIDTH)
-    print("  ACE-Step GPU Detection Diagnostic Tool")
+    print("  SARIGAMA GPU Detection Diagnostic Tool")
     print("=" * HEADER_WIDTH)
     print("\nThis tool will help diagnose GPU detection issues.")
     print("Please share the output with support when reporting issues.")
@@ -275,7 +278,7 @@ def main():
         gpu_ok = check_cuda_availability()
         check_rocm_setup()
         check_nvidia_setup()
-        check_ace_step_env()
+        check_sarigama_env()
     
     print_recommendations()
     
