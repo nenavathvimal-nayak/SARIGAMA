@@ -1,7 +1,7 @@
 [project]
 name = "sarigama"
 version = "1.5.0"
-description = "SARIGAMA: Next-Generation Open-Source Music Generation Foundation Model"
+description = "SARIGAMA — AI-Powered Music Creation Studio"
 readme = "README.md"
 requires-python = ">=3.11,<3.13"
 license = {text = "MIT"}

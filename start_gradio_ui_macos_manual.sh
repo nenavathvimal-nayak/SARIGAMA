@@ -75,7 +75,7 @@ _load_env_file
 _load_manual() {
     echo -e "\033[1;36m"
     echo "======================================================"
-    echo "            ACE-Step Manual Launch Mode"
+    echo "            SARIGAMA Manual Launch Mode"
     echo "======================================================"
     echo
 
@@ -347,7 +347,7 @@ _startup_update_check() {
 _startup_update_check
 
 echo "============================================"
-echo "  ACE-Step 1.5 - macOS Apple Silicon (MLX)"
+echo "  SARIGAMA - macOS Apple Silicon (MLX)"
 echo "============================================"
 echo
 echo "Server will be available at: http://${SERVER_NAME}:${PORT}"
@@ -368,7 +368,7 @@ if ! command -v uv &>/dev/null; then
     echo "uv package manager not found!"
     echo "========================================"
     echo
-    echo "ACE-Step requires the uv package manager."
+    echo "SARIGAMA requires the uv package manager."
     echo
     read -rp "Install uv now? (Y/N): " INSTALL_UV
 
@@ -463,7 +463,7 @@ cd "$SCRIPT_DIR" && uv run $ACESTEP_ARGS || {
     uv run --offline $ACESTEP_ARGS || {
         echo
         echo "========================================"
-        echo "[Error] Failed to start ACE-Step"
+        echo "[Error] Failed to start SARIGAMA"
         echo "========================================"
         echo
         echo "Both online and offline modes failed."

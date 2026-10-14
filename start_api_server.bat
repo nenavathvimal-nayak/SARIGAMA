@@ -144,7 +144,7 @@ if exist "%~dp0python_embedded\python.exe" (
         echo uv package manager not found!
         echo ========================================
         echo.
-        echo ACE-Step requires either:
+        echo SARIGAMA requires either:
         echo   1. python_embedded directory ^(portable package^)
         echo   2. uv package manager
         echo.
@@ -217,7 +217,7 @@ if exist "%~dp0python_embedded\python.exe" (
             echo.
             echo Installation cancelled.
             echo.
-            echo To use ACE-Step, please either:
+            echo To use SARIGAMA, please either:
             echo   1. Install uv: winget install --id=astral-sh.uv -e
             echo   2. Download portable package: https://files.acemusic.ai/acemusic/win/ACE-Step-1.5.7z
             echo.
@@ -291,7 +291,7 @@ if exist "%~dp0python_embedded\python.exe" (
         if !ERRORLEVEL! NEQ 0 (
             echo.
             echo ========================================
-            echo [Error] Failed to start ACE-Step API Server
+            echo [Error] Failed to start SARIGAMA API Server
             echo ========================================
             echo.
             echo Both online and offline modes failed.

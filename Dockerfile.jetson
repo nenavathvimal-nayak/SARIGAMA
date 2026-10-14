@@ -23,27 +23,27 @@
 #     -p 7860:7860 \
 #     -v $(pwd)/checkpoints:/app/checkpoints \
 #     -v $(pwd)/gradio_outputs:/app/gradio_outputs \
-#     acestep-jetson
+#     sarigama-jetson
 #
 # Run (REST API server):
 #   docker run --runtime nvidia -it --rm \
 #     -p 8001:8001 \
 #     -v $(pwd)/checkpoints:/app/checkpoints \
 #     -e ACESTEP_MODE=api \
-#     acestep-jetson
+#     sarigama-jetson
 #
 # Run without pre-initialization (deferred to UI "Initialize" button):
 #   docker run --runtime nvidia -it --rm \
 #     -p 7860:7860 \
 #     -v $(pwd)/checkpoints:/app/checkpoints \
 #     -e ACESTEP_INIT_SERVICE=false \
-#     acestep-jetson
+#     sarigama-jetson
 #
 # ---- JetPack 5.x (Xavier) ----
 # Override build args for JetPack 5:
 #   docker build -f Dockerfile.jetson \
 #     --build-arg L4T_VERSION=r35.5.0 \
-#     -t acestep-jetson-jp5 .
+#     -t sarigama-jetson-jp5 .
 #
 # =============================================================================
 
@@ -290,7 +290,7 @@ COPY <<'EOF' /app/docker-entrypoint.sh
 set -e
 
 echo "==========================================="
-echo "  ACE-Step 1.5 — NVIDIA Jetson Container"
+echo "  SARIGAMA — NVIDIA Jetson Container"
 echo "==========================================="
 echo "Mode      : ${ACESTEP_MODE}"
 echo "Python    : $(python --version 2>&1)"

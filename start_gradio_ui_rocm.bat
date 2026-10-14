@@ -157,7 +157,7 @@ echo.
 :SkipUpdateCheck
 
 echo ============================================
-echo   ACE-Step 1.5 - AMD ROCm 7.2 Edition
+echo   SARIGAMA - AMD ROCm 7.2 Edition
 echo ============================================
 echo.
 

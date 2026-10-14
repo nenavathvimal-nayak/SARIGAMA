@@ -15,12 +15,12 @@
 # =============================================================================
 
 services:
-  acestep:
+  sarigama:
     build:
       context: .
       dockerfile: Dockerfile
-    image: ghcr.io/ace-step/ace-step-1.5:latest
-    container_name: acestep
+    image: ghcr.io/nenavathvimal-nayak/sarigama:latest
+    container_name: sarigama
 
     # ---- GPU access ----
     deploy:

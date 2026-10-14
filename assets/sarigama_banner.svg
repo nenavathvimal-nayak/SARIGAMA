@@ -82,13 +82,13 @@
   <g transform="translate(680, 85)">
     <rect width="180" height="28" rx="14" fill="#1E1B4B" stroke="#6366F1" stroke-width="1.2" />
     <text x="90" y="19" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="12" font-weight="700" fill="#C7D2FE" text-anchor="middle" letter-spacing="1">
-      AI MUSIC PLATFORM
+      AI CREATION STUDIO
     </text>
   </g>
 
   <!-- Tagline -->
   <text x="248" y="175" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="20" font-weight="500" fill="#94A3B8" letter-spacing="0.5">
-    AI-Powered Music Creation and Production Platform
+    AI-Powered Music Creation Studio
   </text>
 
   <!-- Secondary Descriptive Line -->

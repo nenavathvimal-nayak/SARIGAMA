@@ -5,7 +5,7 @@ REM This script creates the venv_xpu virtual environment and installs all depend
 REM For Intel Arc GPUs (A770, A750, A580, A380) and integrated graphics
 
 echo ======================================================
-echo     ACE-Step 1.5 - Intel XPU Environment Setup
+echo     SARIGAMA - Intel XPU Environment Setup
 echo ======================================================
 echo.
 echo This script will:

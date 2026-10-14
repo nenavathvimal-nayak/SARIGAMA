@@ -132,7 +132,7 @@ echo.
 :SkipUpdateCheck
 
 echo ============================================
-echo   ACE-Step 1.5 API - Intel XPU Edition
+echo   SARIGAMA API - Intel XPU Edition
 echo ============================================
 echo.
 

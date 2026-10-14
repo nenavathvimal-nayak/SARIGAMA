@@ -13,14 +13,14 @@
 #     -p 7860:7860 \
 #     -v $(pwd)/checkpoints:/app/checkpoints \
 #     -v $(pwd)/gradio_outputs:/app/gradio_outputs \
-#     acestep
+#     sarigama
 #
 # Run (REST API server):
 #   docker run --gpus all -it --rm \
 #     -p 8001:8001 \
 #     -v $(pwd)/checkpoints:/app/checkpoints \
 #     -e ACESTEP_MODE=api \
-#     acestep
+#     sarigama
 #
 # =============================================================================
 
@@ -108,7 +108,7 @@ COPY <<'ENTRYPOINT_EOF' /app/docker-entrypoint.sh
 set -e
 
 echo "==========================================="
-echo "  ACE-Step 1.5"
+echo "  SARIGAMA — AI-Powered Music Creation Studio"
 echo "==========================================="
 echo "Mode      : ${ACESTEP_MODE}"
 echo "Python    : $(uv run python --version 2>&1)"

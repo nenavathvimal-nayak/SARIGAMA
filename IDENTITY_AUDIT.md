@@ -20,15 +20,15 @@ This audit documents the systematic classification of upstream `ACE-Step` refere
 ## Detailed Classification Register
 
 ### 1. Project-Level Branding & Metadata (Category A)
-- **`README.md` Title & Hero**: Updated from `ACE-Step 1.5` to `🎵 SARIGAMA — Next-Generation Open-Source AI Music Generation Foundation Model`. (Category A)
-- **`pyproject.toml`**: `project.name = "sarigama"`, `description = "SARIGAMA: Next-Generation Open-Source Music Generation Foundation Model"`. Added scripts `sarigama`, `sarigama-api`, `sarigama-download`, `sarigama-openrouter` alongside backward-compatible aliases `acestep*`. (Category A & B)
-- **`package.json`**: Package name set to `"sarigama"`. (Category A)
-- **Gradio Web UI (`acestep/ui/gradio/i18n/*.json`)**: App title updated to `🎵 SARIGAMA Studio 💡` across all 5 localization bundles (`en.json`, `zh.json`, `ja.json`, `pt.json`, `he.json`). (Category A)
+- **`README.md` Title & Hero**: Updated from `ACE-Step 1.5` to `🎵 SARIGAMA — AI-Powered Music Creation Studio`. (Category A)
+- **`pyproject.toml`**: `project.name = "sarigama"`, `description = "SARIGAMA — AI-Powered Music Creation Studio"`. Added scripts `sarigama`, `sarigama-api`, `sarigama-download`, `sarigama-openrouter` alongside backward-compatible aliases `acestep*`. (Category A & B)
+- **`package.json`**: Package name set to `"sarigama"`, `description = "SARIGAMA — AI-Powered Music Creation Studio"`. (Category A)
+- **Gradio Web UI (`acestep/ui/gradio/i18n/*.json`)**: App title updated to `🎵 SARIGAMA Studio 💡` / `🎵 SARIGAMA 音乐工作室 💡` across localization bundles (`en.json`, `zh.json`, `ja.json`, `pt.json`, `he.json`). (Category A)
 - **FastAPI Documentation (`acestep/api_server.py`)**: `title="SARIGAMA API"`, `version="1.5.0"`. (Category A)
 - **OpenRouter Server (`openrouter/openrouter_api_server.py`)**: `MODEL_NAME = "SARIGAMA"`, `title="SARIGAMA OpenRouter API"`. (Category A)
 - **Interactive CLI Wizard (`cli.py`)**: Welcome banner updated to `"Welcome to the SARIGAMA Music Generation Wizard!"`. (Category A)
-- **Launch Scripts (`start_*.sh`, `start_*.bat`)**: Banners updated to `"Starting SARIGAMA"`. (Category A)
-- **Docker Compose (`docker-compose.yml`)**: Header updated to `SARIGAMA — Docker Compose`. (Category A)
+- **Launch Scripts (`start_*.sh`, `start_*.bat`)**: Banners updated to `"SARIGAMA"`. (Category A)
+- **Docker & Compose (`docker-compose.yml`, `docker-compose.jetson.yml`, `Dockerfile`, `Dockerfile.jetson`)**: Service/image names and entrypoint banners updated to `sarigama` / `sarigama-jetson`. (Category A)
 
 ### 2. Technical Compatibility Identifiers Retained (Category B)
 - **Module Namespace (`acestep.*`)**: Preserved. Renaming the Python package directory would break hundreds of internal imports, downstream integrations, ComfyUI nodes, and external scripts.

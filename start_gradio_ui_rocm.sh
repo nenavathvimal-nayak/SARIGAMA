@@ -203,7 +203,7 @@ _startup_update_check() {
 _startup_update_check
 
 echo "============================================"
-echo "  ACE-Step 1.5 - Linux AMD ROCm Edition"
+echo "  SARIGAMA - Linux AMD ROCm Edition"
 echo "============================================"
 echo
 

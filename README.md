@@ -1,5 +1,5 @@
 <h1 align="center">🎵 SARIGAMA</h1>
-<h3 align="center">Pushing the Boundaries of Open-Source AI Music Generation</h3>
+<h3 align="center">SARIGAMA — AI-Powered Music Creation Studio</h3>
 <p align="center">
     <b>Transform text descriptions, emotions, and lyrics into studio-quality musical compositions.</b>
 </p>

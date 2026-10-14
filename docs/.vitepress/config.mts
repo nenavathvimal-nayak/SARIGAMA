@@ -2,7 +2,7 @@ import { defineConfig } from 'vitepress'
 
 export default defineConfig({
   title: 'SARIGAMA',
-  description: 'AI-Powered Music Creation and Production Platform',
+  description: 'SARIGAMA — AI-Powered Music Creation Studio',
 
   base: '/SARIGAMA/',
   lastUpdated: true,

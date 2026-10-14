@@ -136,7 +136,7 @@ echo.
 :SkipUpdateCheck
 
 echo ============================================
-echo   ACE-Step 1.5 API - AMD ROCm 7.2 Edition
+echo   SARIGAMA API - AMD ROCm 7.2 Edition
 echo ============================================
 echo.
 

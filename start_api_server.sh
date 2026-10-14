@@ -133,7 +133,7 @@ if ! command -v uv &>/dev/null; then
     echo "uv package manager not found!"
     echo "========================================"
     echo
-    echo "ACE-Step requires the uv package manager."
+    echo "SARIGAMA requires the uv package manager."
     echo
     read -rp "Install uv now? (Y/N): " INSTALL_UV
 
@@ -260,7 +260,7 @@ cd "$SCRIPT_DIR" && uv run --no-sync $ACESTEP_ARGS || {
     uv run --offline --no-sync $ACESTEP_ARGS || {
         echo
         echo "========================================"
-        echo "[Error] Failed to start ACE-Step API Server"
+        echo "[Error] Failed to start SARIGAMA API Server"
         echo "========================================"
         echo
         echo "Both online and offline modes failed."

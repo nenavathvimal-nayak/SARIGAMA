@@ -31,14 +31,14 @@
 # =============================================================================
 
 services:
-  acestep:
+  sarigama-jetson:
     build:
       context: .
       dockerfile: Dockerfile.jetson
       args:
         L4T_VERSION: ${L4T_VERSION:-r36.4.0}
-    image: acestep-jetson:latest
-    container_name: acestep-jetson
+    image: ghcr.io/nenavathvimal-nayak/sarigama-jetson:latest
+    container_name: sarigama-jetson
 
     # ---- GPU access ----
     runtime: nvidia

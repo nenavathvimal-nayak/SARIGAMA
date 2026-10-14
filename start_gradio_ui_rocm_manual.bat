@@ -161,7 +161,7 @@ echo.
 :SkipUpdateCheck
 
 echo ============================================
-echo   ACE-Step 1.5 - AMD ROCm 7.2 Edition
+echo   SARIGAMA - AMD ROCm 7.2 Edition
 echo ============================================
 echo.
 
@@ -280,7 +280,7 @@ REM Ask for manual settings
 color 0B
 echo.
 echo ======================================================
-echo             ACE-Step Manual Launch Mode
+echo             SARIGAMA Manual Launch Mode
 echo ======================================================
 echo.
 :manual_choice_ask

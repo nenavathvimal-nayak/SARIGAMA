@@ -2,7 +2,7 @@
 
 ## 1. Product Identity & Purpose
 
-**SARIGAMA** is an open-source, AI-powered music creation and production platform. Designed for musicians, sound designers, content creators, and AI researchers, SARIGAMA turns natural language descriptions, genre tags, and lyrical prompts into studio-quality musical arrangements across 50+ languages.
+**SARIGAMA — AI-Powered Music Creation Studio** is an open-source music foundation model platform. Designed for musicians, sound designers, content creators, and AI researchers, SARIGAMA turns natural language descriptions, genre tags, and lyrical prompts into studio-quality musical arrangements across 50+ languages.
 
 Built on consumer-accessible hardware requirements (running locally in under 4GB of VRAM), SARIGAMA delivers commercial-grade synthesis with sub-2-second generation on high-end GPUs and rapid inference on Apple Silicon, AMD ROCm, and Intel XPU.
 

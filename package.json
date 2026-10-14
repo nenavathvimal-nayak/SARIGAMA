@@ -1,5 +1,6 @@
 {
   "name": "sarigama",
+  "description": "SARIGAMA — AI-Powered Music Creation Studio",
   "private": true,
   "scripts": {
     "docs:fetch": "node scripts/fetch-awesome.mjs",

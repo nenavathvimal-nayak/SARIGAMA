@@ -75,7 +75,7 @@ _load_env_file
 _load_manual() {
     echo -e "\033[1;36m"
     echo "======================================================"
-    echo "            ACE-Step Manual Launch Mode"
+    echo "            SARIGAMA Manual Launch Mode"
     echo "======================================================"
     echo
 
@@ -324,7 +324,7 @@ _startup_update_check() {
 _startup_update_check
 
 echo "============================================"
-echo "  ACE-Step 1.5 - Linux AMD ROCm Edition"
+echo "  SARIGAMA - Linux AMD ROCm Edition"
 echo "============================================"
 echo
 
