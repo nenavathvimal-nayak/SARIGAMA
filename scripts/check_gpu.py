@@ -40,11 +40,14 @@ def check_pytorch():
         # Check build type
         is_rocm = hasattr(torch.version, 'hip') and torch.version.hip is not None
         is_cuda = hasattr(torch.version, 'cuda') and torch.version.cuda is not None
+        is_mps = hasattr(torch.backends, 'mps') and torch.backends.mps.is_available()
         
         if is_rocm:
             print(f"✓ Build type: ROCm (HIP {torch.version.hip})")
         elif is_cuda:
             print(f"✓ Build type: CUDA {torch.version.cuda}")
+        elif is_mps:
+            print("✓ Build type: Apple Silicon Metal (MPS / MLX)")
         else:
             print("⚠️ Build type: CPU-only")
             print("\n❌ You have installed a CPU-only version of PyTorch!")
@@ -54,6 +57,8 @@ def check_pytorch():
             print("\n  For AMD GPUs with ROCm:")
             print("    Windows: See requirements-rocm.txt")
             print(f"    Linux: pip install torch --index-url {PYTORCH_ROCM_INSTALL_URL}")
+            print("\n  For Apple Silicon (macOS):")
+            print("    PyTorch includes native MPS acceleration out of the box.")
             return False
         
         return True
@@ -87,6 +92,16 @@ def check_cuda_availability():
                 print(f"    Total memory: {memory_gb:.2f} GB")
                 print(f"    Compute capability: {props.major}.{props.minor}")
             
+            return True
+        elif hasattr(torch.backends, 'mps') and torch.backends.mps.is_available():
+            print("✓ Apple Silicon GPU detected via Metal Performance Shaders (MPS)!")
+            try:
+                mem_cmd = subprocess.run(['sysctl', '-n', 'hw.memsize'], capture_output=True, text=True)
+                if mem_cmd.returncode == 0:
+                    total_ram = int(mem_cmd.stdout.strip()) / (1024**3)
+                    print(f"  Unified Memory: {total_ram:.1f} GB")
+            except Exception:
+                pass
             return True
         else:
             print("❌ No GPU detected by PyTorch")
@@ -191,6 +206,34 @@ def check_nvidia_setup():
         print("❌ PyTorch not installed")
 
 
+def check_apple_silicon_setup():
+    """Check Apple Silicon Metal and MLX acceleration setup."""
+    import platform
+    if platform.system() != 'Darwin':
+        return
+        
+    print_section("Apple Silicon Metal & MLX Configuration")
+    print(f"Architecture: {platform.machine()}")
+    
+    try:
+        import torch
+        mps_avail = hasattr(torch.backends, 'mps') and torch.backends.mps.is_available()
+        print(f"  PyTorch MPS available: {mps_avail}")
+    except Exception as e:
+        print(f"  PyTorch MPS check error: {e}")
+        
+    try:
+        import mlx.core as mx
+        mlx_avail = mx.metal.is_available()
+        print(f"  Apple MLX Metal available: {mlx_avail}")
+        if mlx_avail:
+            print("  ✓ Apple MLX native acceleration ready for SARIGAMA")
+    except ImportError:
+        print("  Apple MLX not installed (optional, use 'pip install mlx mlx-lm')")
+    except Exception as e:
+        print(f"  MLX check error: {e}")
+
+
 def check_sarigama_env():
     """Check SARIGAMA specific environment variables."""
     print_section("SARIGAMA Environment Variables")
@@ -226,11 +269,15 @@ def print_recommendations():
         
         is_rocm = hasattr(torch.version, 'hip') and torch.version.hip is not None
         is_cuda = hasattr(torch.version, 'cuda') and torch.version.cuda is not None
+        is_mps = hasattr(torch.backends, 'mps') and torch.backends.mps.is_available()
         is_available = torch.cuda.is_available()
         
         if is_available:
             print("✓ Your GPU setup appears to be working correctly!")
             print("\nYou can now run SARIGAMA with GPU acceleration.")
+        elif is_mps:
+            print("✓ Apple Silicon GPU acceleration detected (Metal Performance Shaders / MLX)!")
+            print("\nYou can now run SARIGAMA with native Apple Silicon hardware acceleration.")
         elif is_rocm:
             print("❌ ROCm build detected but GPU not available")
             print("\nTroubleshooting steps for AMD GPUs:")
@@ -278,6 +325,7 @@ def main():
         gpu_ok = check_cuda_availability()
         check_rocm_setup()
         check_nvidia_setup()
+        check_apple_silicon_setup()
         check_sarigama_env()
     
     print_recommendations()
