@@ -37,6 +37,7 @@ from acestep.ui.gradio.interfaces.user_preferences import (
 )
 from acestep.ui.gradio.interfaces.result import create_results_section
 from acestep.ui.gradio.interfaces.training import create_training_section
+from acestep.ui.gradio.brand import get_brand_favicon_head, get_brand_logo_html
 from acestep.ui.gradio.events import setup_event_handlers, setup_training_event_handlers
 from acestep.ui.gradio.help_content import create_help_button, HELP_MODAL_CSS
 
@@ -65,7 +66,7 @@ def create_gradio_interface(dit_handler, llm_handler, dataset_handler, init_para
     with gr.Blocks(
         title=t("app.title"),
         theme=gr.themes.Soft(),
-        head=get_audio_player_preferences_head() + ("" if service_mode else get_user_preferences_head()) + """
+        head=get_brand_favicon_head() + get_audio_player_preferences_head() + ("" if service_mode else get_user_preferences_head()) + """
         <script>
         /* Flip tooltips upward when they would overflow the viewport bottom.
            Handles both .has-info-container and .checkbox-container elements. */
@@ -315,6 +316,7 @@ def create_gradio_interface(dit_handler, llm_handler, dataset_handler, init_para
         
         gr.HTML(f"""
         <div class="main-header">
+            {get_brand_logo_html()}
             <h1>{t("app.title")}</h1>
             <p>{t("app.subtitle")}</p>
         </div>
