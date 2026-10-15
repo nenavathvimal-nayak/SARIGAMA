@@ -1,8 +1,8 @@
 import { defineConfig } from 'vitepress'
 
 export default defineConfig({
-  title: 'SARIGAMA',
-  description: 'SARIGAMA — AI-Powered Music Creation Studio',
+  title: 'DHAAVLO MUSICAL INTELLIGENCE',
+  description: 'DHAAVLO MUSICAL INTELLIGENCE (DHAVLO MI) — AI-powered music intelligence and generation platform',
 
   base: '/SARIGAMA/',
   lastUpdated: true,
@@ -19,8 +19,8 @@ export default defineConfig({
   head: [
     ['link', { rel: 'icon', type: 'image/svg+xml', href: '/SARIGAMA/favicon.svg' }],
     ['meta', { name: 'og:type', content: 'website' }],
-    ['meta', { name: 'og:title', content: 'SARIGAMA Documentation' }],
-    ['meta', { name: 'og:description', content: 'AI-Powered Music Creation and Production Platform' }],
+    ['meta', { name: 'og:title', content: 'DHAAVLO MUSICAL INTELLIGENCE (DHAVLO MI) Documentation' }],
+    ['meta', { name: 'og:description', content: 'AI-powered music intelligence and generation platform' }],
   ],
 
   locales: {
@@ -92,7 +92,7 @@ export default defineConfig({
 
     footer: {
       message: 'Released under the MIT License.',
-      copyright: 'Copyright 2026 SARIGAMA Contributors. Core engine powered by ACE-Step (MIT License).',
+      copyright: 'Copyright 2026 DHAAVLO MUSICAL INTELLIGENCE (DHAVLO MI) Contributors. Core engine powered by foundational diffusion transformer architectures.',
     },
   },
 })

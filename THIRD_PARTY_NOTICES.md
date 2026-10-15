@@ -1,6 +1,6 @@
 # Third-Party Notices & Open-Source Compliance
 
-This document details the third-party components, upstream foundations, and open-source licenses incorporated into or utilized by **SARIGAMA**.
+This document details the third-party components, upstream foundations, and open-source licenses incorporated into or utilized by **DHAAVLO MUSICAL INTELLIGENCE (DHAVLO MI)**.
 
 ---
 
@@ -76,7 +76,7 @@ SOFTWARE.
 
 ## 3. Pre-Trained Model Weights & Terms of Use
 
-SARIGAMA downloads and uses pre-trained weights for inference and generation:
+DHAVLO MI downloads and uses pre-trained weights for inference and generation:
 
 | Component | Model Name | Source / Provider | License / Conditions |
 |-----------|------------|-------------------|----------------------|

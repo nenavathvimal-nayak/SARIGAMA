@@ -92,8 +92,10 @@ class AuthHelpersTests(unittest.TestCase):
 
         import os
 
+        old_dhavlo_env = os.environ.get("DHAVLO_MI_ENV")
         old_env = os.environ.get("SARIGAMA_ENV")
         try:
+            os.environ["DHAVLO_MI_ENV"] = "production"
             os.environ["SARIGAMA_ENV"] = "production"
             set_api_key(None)
             with self.assertRaises(HTTPException) as ctx:
@@ -101,6 +103,10 @@ class AuthHelpersTests(unittest.TestCase):
             self.assertEqual(500, ctx.exception.status_code)
             self.assertIn("API key required in production", ctx.exception.detail)
         finally:
+            if old_dhavlo_env is None:
+                os.environ.pop("DHAVLO_MI_ENV", None)
+            else:
+                os.environ["DHAVLO_MI_ENV"] = old_dhavlo_env
             if old_env is None:
                 os.environ.pop("SARIGAMA_ENV", None)
             else:
@@ -111,8 +117,10 @@ class AuthHelpersTests(unittest.TestCase):
 
         import os
 
+        old_dhavlo_env = os.environ.get("DHAVLO_MI_ENV")
         old_env = os.environ.get("SARIGAMA_ENV")
         try:
+            os.environ["DHAVLO_MI_ENV"] = "production"
             os.environ["SARIGAMA_ENV"] = "production"
             set_api_key(None)
             with self.assertRaises(HTTPException) as ctx:
@@ -120,6 +128,10 @@ class AuthHelpersTests(unittest.TestCase):
             self.assertEqual(500, ctx.exception.status_code)
             self.assertIn("API key required in production", ctx.exception.detail)
         finally:
+            if old_dhavlo_env is None:
+                os.environ.pop("DHAVLO_MI_ENV", None)
+            else:
+                os.environ["DHAVLO_MI_ENV"] = old_dhavlo_env
             if old_env is None:
                 os.environ.pop("SARIGAMA_ENV", None)
             else:

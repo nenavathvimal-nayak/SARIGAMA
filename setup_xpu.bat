@@ -1,11 +1,11 @@
 @echo off
 setlocal enabledelayedexpansion
-REM ACE-Step XPU Environment Setup Script
+REM DHAVLO MI XPU Environment Setup Script
 REM This script creates the venv_xpu virtual environment and installs all dependencies
 REM For Intel Arc GPUs (A770, A750, A580, A380) and integrated graphics
 
 echo ======================================================
-echo     SARIGAMA - Intel XPU Environment Setup
+echo     DHAVLO MI - Intel XPU Environment Setup
 echo ======================================================
 echo.
 echo This script will:

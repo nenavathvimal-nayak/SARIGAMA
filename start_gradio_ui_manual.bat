@@ -1,8 +1,8 @@
 @echo off
 chcp 65001 >nul
 setlocal enabledelayedexpansion
-REM ACE-Step Gradio Web UI Launcher
-REM This script launches the Gradio web interface for ACE-Step
+REM DHAVLO MI Gradio Web UI Launcher
+REM This script launches the Gradio web interface for DHAVLO MI
 
 REM ==================== Load .env Configuration ====================
 REM Load settings from .env file if it exists
@@ -138,7 +138,7 @@ echo.
 
 :SkipUpdateCheck
 
-echo Starting SARIGAMA Gradio Web UI...
+echo Starting DHAVLO MI Gradio Web UI...
 echo Server will be available at: http://%SERVER_NAME%:%PORT%
 echo.
 
@@ -175,7 +175,7 @@ if exist "%~dp0python_embedded\python.exe" (
         echo uv package manager not found!
         echo ========================================
         echo.
-        echo SARIGAMA requires either:
+        echo DHAVLO MI requires either:
         echo   1. python_embedded directory ^(portable package^)
         echo   2. uv package manager
         echo.
@@ -248,7 +248,7 @@ if exist "%~dp0python_embedded\python.exe" (
             echo.
             echo Installation cancelled.
             echo.
-            echo To use SARIGAMA, please either:
+            echo To use DHAVLO MI, please either:
             echo   1. Install uv: winget install --id=astral-sh.uv -e
             echo   2. Download portable package: https://files.acemusic.ai/acemusic/win/ACE-Step-1.5.7z
             echo.
@@ -301,7 +301,7 @@ if exist "%~dp0python_embedded\python.exe" (
         echo.
     )
 
-    echo Starting SARIGAMA Gradio UI...
+    echo Starting DHAVLO MI Gradio UI...
     echo.
 
     REM Build command with optional parameters
@@ -328,7 +328,7 @@ if exist "%~dp0python_embedded\python.exe" (
         if !ERRORLEVEL! NEQ 0 (
             echo.
             echo ========================================
-            echo [Error] Failed to start SARIGAMA
+            echo [Error] Failed to start DHAVLO MI
             echo ========================================
             echo.
             echo Both online and offline modes failed.
@@ -411,7 +411,7 @@ REM Ask for manual settings
 color 0B
 echo.
 echo ======================================================
-echo             SARIGAMA Manual Launch Mode
+echo             DHAVLO MI Manual Launch Mode
 echo ======================================================
 echo.
 :manual_choice_ask

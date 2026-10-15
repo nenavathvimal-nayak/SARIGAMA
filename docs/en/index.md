@@ -1,12 +1,12 @@
 ---
 layout: home
 hero:
-  name: SARIGAMA
-  text: AI-Powered Music Creation Studio
-  tagline: Commercial-grade music generation on consumer hardware. Under 2s per song on A100, <4GB VRAM.
+  name: DHAVLO MI
+  text: DHAAVLO MUSICAL INTELLIGENCE
+  tagline: AI-powered music intelligence and generation platform. Commercial-grade synthesis on consumer hardware (<4GB VRAM).
   image:
     src: /logo.svg
-    alt: SARIGAMA
+    alt: DHAVLO MI
   actions:
     - theme: brand
       text: Installation

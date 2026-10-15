@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
-# ACE-Step REST API Server Launcher - Linux (CUDA)
-# This script launches the REST API server for ACE-Step
+# DHAVLO MI REST API Server Launcher - Linux (CUDA)
+# This script launches the REST API server for DHAVLO MI
 
 set -euo pipefail
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
@@ -113,7 +113,7 @@ _startup_update_check() {
 }
 _startup_update_check
 
-echo "Starting SARIGAMA REST API Server..."
+echo "Starting DHAVLO MI REST API Server..."
 echo "API will be available at: http://${HOST}:${PORT}"
 echo "API Documentation: http://${HOST}:${PORT}/docs"
 echo
@@ -133,7 +133,7 @@ if ! command -v uv &>/dev/null; then
     echo "uv package manager not found!"
     echo "========================================"
     echo
-    echo "SARIGAMA requires the uv package manager."
+    echo "DHAVLO MI requires the uv package manager."
     echo
     read -rp "Install uv now? (Y/N): " INSTALL_UV
 
@@ -244,7 +244,7 @@ fi
 
 _ensure_legacy_nvidia_torch_compat
 
-echo "Starting SARIGAMA API Server..."
+echo "Starting DHAVLO MI API Server..."
 echo
 
 # Build command with optional parameters
@@ -260,7 +260,7 @@ cd "$SCRIPT_DIR" && uv run --no-sync $ACESTEP_ARGS || {
     uv run --offline --no-sync $ACESTEP_ARGS || {
         echo
         echo "========================================"
-        echo "[Error] Failed to start SARIGAMA API Server"
+        echo "[Error] Failed to start DHAVLO MI API Server"
         echo "========================================"
         echo
         echo "Both online and offline modes failed."

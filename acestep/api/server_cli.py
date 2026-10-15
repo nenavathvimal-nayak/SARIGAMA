@@ -20,7 +20,7 @@ def run_api_server_main(
         argv: Optional explicit arg list (used by tests). Defaults to process argv.
     """
 
-    parser = argparse.ArgumentParser(description="ACE-Step API server")
+    parser = argparse.ArgumentParser(description="DHAVLO MI API server")
     parser.add_argument(
         "--host",
         default=os.getenv("ACESTEP_API_HOST", "127.0.0.1"),
@@ -35,8 +35,8 @@ def run_api_server_main(
     parser.add_argument(
         "--api-key",
         type=str,
-        default=os.getenv("SARIGAMA_API_KEY") or os.getenv("ACESTEP_API_KEY", None),
-        help="API key for authentication (default from SARIGAMA_API_KEY or ACESTEP_API_KEY)",
+        default=os.getenv("DHAVLO_MI_API_KEY") or os.getenv("SARIGAMA_API_KEY") or os.getenv("ACESTEP_API_KEY", None),
+        help="API key for authentication (default from DHAVLO_MI_API_KEY, SARIGAMA_API_KEY, or ACESTEP_API_KEY)",
     )
     parser.add_argument(
         "--download-source",
@@ -68,6 +68,7 @@ def run_api_server_main(
     args = parser.parse_args(args=argv)
 
     if args.api_key:
+        os.environ["DHAVLO_MI_API_KEY"] = args.api_key
         os.environ["SARIGAMA_API_KEY"] = args.api_key
         os.environ["ACESTEP_API_KEY"] = args.api_key
 

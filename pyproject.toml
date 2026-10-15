@@ -1,7 +1,7 @@
 [project]
-name = "sarigama"
+name = "dhavlo-mi"
 version = "1.5.0"
-description = "SARIGAMA — AI-Powered Music Creation Studio"
+description = "DHAAVLO MUSICAL INTELLIGENCE (DHAVLO MI) — AI-powered music intelligence and generation platform"
 readme = "README.md"
 requires-python = ">=3.11,<3.13"
 license = {text = "MIT"}
@@ -95,6 +95,10 @@ torchaudio = [
 ]
 
 [project.scripts]
+dhavlo-mi = "acestep.acestep_v15_pipeline:main"
+dhavlo-mi-api = "acestep.api_server:main"
+dhavlo-mi-download = "acestep.model_downloader:main"
+dhavlo-mi-openrouter = "openrouter.openrouter_api_server:main"
 sarigama = "acestep.acestep_v15_pipeline:main"
 sarigama-api = "acestep.api_server:main"
 sarigama-download = "acestep.model_downloader:main"

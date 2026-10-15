@@ -94,8 +94,10 @@ async def save_upload_to_temp(upload: StarletteUploadFile, *, prefix: str) -> st
             detail=f"Unsupported audio file extension: '{raw_suffix}'",
         )
 
-    max_mb_str = os.getenv("SARIGAMA_MAX_UPLOAD_SIZE_MB") or os.getenv(
-        "ACESTEP_MAX_UPLOAD_SIZE_MB", str(DEFAULT_MAX_UPLOAD_SIZE_MB)
+    max_mb_str = (
+        os.getenv("DHAVLO_MI_MAX_UPLOAD_SIZE_MB")
+        or os.getenv("SARIGAMA_MAX_UPLOAD_SIZE_MB")
+        or os.getenv("ACESTEP_MAX_UPLOAD_SIZE_MB", str(DEFAULT_MAX_UPLOAD_SIZE_MB))
     )
     try:
         max_mb = int(max_mb_str)

@@ -1,6 +1,6 @@
 @echo off
 setlocal enabledelayedexpansion
-REM ACE-Step REST API Server Launcher - AMD ROCm 7.2
+REM DHAVLO MI REST API Server Launcher - AMD ROCm 7.2
 REM For AMD RX 7000/6000 series GPUs on Windows 11
 REM IMPORTANT: Requires Python 3.12 (AMD ROCm 7.2 only provides Python 3.12 wheels)
 REM Requires: ROCm PyTorch from repo.radeon.com
@@ -136,7 +136,7 @@ echo.
 :SkipUpdateCheck
 
 echo ============================================
-echo   SARIGAMA API - AMD ROCm 7.2 Edition
+echo   DHAVLO MI API - AMD ROCm 7.2 Edition
 echo ============================================
 echo.
 
@@ -165,7 +165,7 @@ if !ERRORLEVEL! NEQ 0 (
 )
 echo.
 
-echo Starting SARIGAMA REST API Server...
+echo Starting DHAVLO MI REST API Server...
 echo API will be available at: http://%HOST%:%PORT%
 echo API Documentation: http://%HOST%:%PORT%/docs
 echo.

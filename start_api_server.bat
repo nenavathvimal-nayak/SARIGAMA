@@ -1,7 +1,7 @@
 @echo off
 setlocal enabledelayedexpansion
-REM ACE-Step REST API Server Launcher
-REM This script launches the REST API server for ACE-Step
+REM DHAVLO MI REST API Server Launcher
+REM This script launches the REST API server for DHAVLO MI
 
 REM ==================== Configuration ====================
 REM Uncomment and modify the parameters below as needed
@@ -115,7 +115,7 @@ echo.
 
 :SkipUpdateCheck
 
-echo Starting SARIGAMA REST API Server...
+echo Starting DHAVLO MI REST API Server...
 echo API will be available at: http://%HOST%:%PORT%
 echo API Documentation: http://%HOST%:%PORT%/docs
 echo.
@@ -144,7 +144,7 @@ if exist "%~dp0python_embedded\python.exe" (
         echo uv package manager not found!
         echo ========================================
         echo.
-        echo SARIGAMA requires either:
+        echo DHAVLO MI requires either:
         echo   1. python_embedded directory ^(portable package^)
         echo   2. uv package manager
         echo.
@@ -217,7 +217,7 @@ if exist "%~dp0python_embedded\python.exe" (
             echo.
             echo Installation cancelled.
             echo.
-            echo To use SARIGAMA, please either:
+            echo To use DHAVLO MI, please either:
             echo   1. Install uv: winget install --id=astral-sh.uv -e
             echo   2. Download portable package: https://files.acemusic.ai/acemusic/win/ACE-Step-1.5.7z
             echo.
@@ -273,7 +273,7 @@ if exist "%~dp0python_embedded\python.exe" (
     call :EnsureLegacyNvidiaTorchCompat
     if !ERRORLEVEL! NEQ 0 exit /b !ERRORLEVEL!
 
-    echo Starting SARIGAMA API Server...
+    echo Starting DHAVLO MI API Server...
     echo.
 
     REM Build command with optional parameters
@@ -291,7 +291,7 @@ if exist "%~dp0python_embedded\python.exe" (
         if !ERRORLEVEL! NEQ 0 (
             echo.
             echo ========================================
-            echo [Error] Failed to start SARIGAMA API Server
+            echo [Error] Failed to start DHAVLO MI API Server
             echo ========================================
             echo.
             echo Both online and offline modes failed.

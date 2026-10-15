@@ -1,6 +1,6 @@
 @echo off
 setlocal enabledelayedexpansion
-REM ACE-Step Gradio Web UI Launcher - Intel XPU
+REM DHAVLO MI Gradio Web UI Launcher - Intel XPU
 REM For Intel Arc GPUs (A770, A750, A580, A380) and integrated graphics
 REM Requires: Python 3.11, PyTorch XPU nightly from download.pytorch.org/whl/xpu
 REM IMPORTANT: Uses torch.xpu backend with SYCL/Level Zero acceleration
@@ -151,7 +151,7 @@ echo.
 :SkipUpdateCheck
 
 echo ============================================
-echo   SARIGAMA - Intel XPU Edition
+echo   DHAVLO MI - Intel XPU Edition
 echo ============================================
 echo.
 
@@ -198,7 +198,7 @@ if !ERRORLEVEL! NEQ 0 (
 )
 echo.
 
-echo Starting SARIGAMA Gradio Web UI...
+echo Starting DHAVLO MI Gradio Web UI...
 echo Server will be available at: http://%SERVER_NAME%:%PORT%
 echo Default Model: acestep-v15-turbo
 echo LM Model: acestep-5Hz-lm-4B (with CPU offload)

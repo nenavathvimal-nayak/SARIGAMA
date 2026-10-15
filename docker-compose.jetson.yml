@@ -1,5 +1,5 @@
 # =============================================================================
-# SARIGAMA — Docker Compose for NVIDIA Jetson
+# DHAAVLO MUSICAL INTELLIGENCE (DHAVLO MI) — Docker Compose for NVIDIA Jetson
 # =============================================================================
 #
 # Prerequisites:
@@ -31,14 +31,14 @@
 # =============================================================================
 
 services:
-  sarigama-jetson:
+  dhavlo-mi-jetson:
     build:
       context: .
       dockerfile: Dockerfile.jetson
       args:
         L4T_VERSION: ${L4T_VERSION:-r36.4.0}
-    image: ghcr.io/nenavathvimal-nayak/sarigama-jetson:latest
-    container_name: sarigama-jetson
+    image: ghcr.io/nenavathvimal-nayak/dhavlo-mi-jetson:latest
+    container_name: dhavlo-mi-jetson
 
     # ---- GPU access ----
     runtime: nvidia

@@ -1,6 +1,6 @@
 {
-  "name": "sarigama",
-  "description": "SARIGAMA — AI-Powered Music Creation Studio",
+  "name": "dhavlo-mi",
+  "description": "DHAAVLO MUSICAL INTELLIGENCE (DHAVLO MI) — AI-powered music intelligence and generation platform",
   "private": true,
   "scripts": {
     "docs:fetch": "node scripts/fetch-awesome.mjs",

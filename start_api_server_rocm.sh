@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# ACE-Step REST API Server Launcher - Linux AMD ROCm
+# DHAVLO MI REST API Server Launcher - Linux AMD ROCm
 # For AMD RX 7000/6000 series GPUs on Linux
 # Requires: ROCm 6.x+ and ROCm PyTorch from https://pytorch.org/
 #
@@ -135,7 +135,7 @@ _startup_update_check() {
 _startup_update_check
 
 echo "============================================"
-echo "  SARIGAMA API - Linux AMD ROCm Edition"
+echo "  DHAVLO MI API - Linux AMD ROCm Edition"
 echo "============================================"
 echo
 
@@ -175,7 +175,7 @@ print(f'HIP: {hip}' if hip else 'WARNING: Not a ROCm build')
 fi
 echo
 
-echo "Starting SARIGAMA REST API Server..."
+echo "Starting DHAVLO MI REST API Server..."
 echo "API will be available at: http://${HOST}:${PORT}"
 echo "API Documentation: http://${HOST}:${PORT}/docs"
 echo

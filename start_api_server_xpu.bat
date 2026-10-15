@@ -1,6 +1,6 @@
 @echo off
 setlocal enabledelayedexpansion
-REM ACE-Step REST API Server Launcher - Intel XPU
+REM DHAVLO MI REST API Server Launcher - Intel XPU
 REM For Intel Arc GPUs (A770, A750, A580, A380) and integrated graphics
 REM Requires: Python 3.11, PyTorch XPU nightly from download.pytorch.org/whl/xpu
 REM IMPORTANT: Uses torch.xpu backend with SYCL/Level Zero acceleration
@@ -132,7 +132,7 @@ echo.
 :SkipUpdateCheck
 
 echo ============================================
-echo   SARIGAMA API - Intel XPU Edition
+echo   DHAVLO MI API - Intel XPU Edition
 echo ============================================
 echo.
 
@@ -179,7 +179,7 @@ if !ERRORLEVEL! NEQ 0 (
 )
 echo.
 
-echo Starting SARIGAMA REST API Server...
+echo Starting DHAVLO MI REST API Server...
 echo API will be available at: http://%HOST%:%PORT%
 echo API Documentation: http://%HOST%:%PORT%/docs
 echo.

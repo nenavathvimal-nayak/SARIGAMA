@@ -1,6 +1,6 @@
-# SARIGAMA — Intel XPU Setup Guide
+# DHAVLO MI — Intel XPU Setup Guide
 
-Quick start guide for running SARIGAMA on Intel Arc GPUs and integrated graphics.
+Quick start guide for running DHAAVLO MUSICAL INTELLIGENCE (DHAVLO MI) on Intel Arc GPUs and integrated graphics.
 
 ## 🎯 What You Need
 
@@ -180,4 +180,4 @@ Once setup is complete, simply run:
 start_gradio_ui_xpu.bat
 ```
 
-And start creating music with SARIGAMA on your Intel GPU!
+And start creating music with DHAVLO MI on your Intel GPU!

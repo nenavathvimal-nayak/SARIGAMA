@@ -208,7 +208,7 @@ def main():
     get_i18n()
 
     parser = argparse.ArgumentParser(
-        description="Gradio Demo for SARIGAMA",
+        description="Gradio Demo for DHAAVLO MUSICAL INTELLIGENCE (DHAVLO MI)",
         formatter_class=argparse.RawTextHelpFormatter,
     )
     parser.add_argument(

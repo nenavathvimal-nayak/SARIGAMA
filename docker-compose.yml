@@ -1,5 +1,5 @@
 # =============================================================================
-# SARIGAMA — Docker Compose (generic CUDA)
+# DHAAVLO MUSICAL INTELLIGENCE (DHAVLO MI) — Docker Compose (generic CUDA)
 # =============================================================================
 #
 # Usage:
@@ -15,12 +15,12 @@
 # =============================================================================
 
 services:
-  sarigama:
+  dhavlo-mi:
     build:
       context: .
       dockerfile: Dockerfile
-    image: ghcr.io/nenavathvimal-nayak/sarigama:latest
-    container_name: sarigama
+    image: ghcr.io/nenavathvimal-nayak/dhavlo-mi:latest
+    container_name: dhavlo-mi
 
     # ---- GPU access ----
     deploy:

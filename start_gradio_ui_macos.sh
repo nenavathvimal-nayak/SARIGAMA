@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# ACE-Step Gradio Web UI Launcher - macOS (Apple Silicon / MLX)
+# DHAVLO MI Gradio Web UI Launcher - macOS (Apple Silicon / MLX)
 # This script launches the Gradio web interface using the MLX backend
 # for native Apple Silicon acceleration.
 #
@@ -226,7 +226,7 @@ _startup_update_check() {
 _startup_update_check
 
 echo "============================================"
-echo "  SARIGAMA - macOS Apple Silicon (MLX)"
+echo "  DHAVLO MI - macOS Apple Silicon (MLX)"
 echo "============================================"
 echo
 echo "Server will be available at: http://${SERVER_NAME}:${PORT}"
@@ -270,7 +270,7 @@ if [[ -f "$SCRIPT_DIR/python_embedded/bin/python3.11" ]]; then
             fi
         fi
 
-        echo "Starting SARIGAMA Gradio UI..."
+        echo "Starting DHAVLO MI Gradio UI..."
         echo
 
         # Build command with optional parameters
@@ -314,7 +314,7 @@ if ! command -v uv &>/dev/null; then
     echo "uv package manager not found!"
     echo "========================================"
     echo
-    echo "SARIGAMA requires the uv package manager."
+    echo "DHAVLO MI requires the uv package manager."
     echo
     read -rp "Install uv now? (Y/N): " INSTALL_UV
 
@@ -383,7 +383,7 @@ if [[ ! -d "$SCRIPT_DIR/.venv" ]]; then
     echo
 fi
 
-echo "Starting SARIGAMA Gradio UI (MLX backend)..."
+echo "Starting DHAVLO MI Gradio UI (MLX backend)..."
 echo
 
 # Build command with optional parameters
@@ -409,7 +409,7 @@ cd "$SCRIPT_DIR" && uv run $ACESTEP_ARGS || {
     uv run --offline $ACESTEP_ARGS || {
         echo
         echo "========================================"
-        echo "[Error] Failed to start SARIGAMA"
+        echo "[Error] Failed to start DHAVLO MI"
         echo "========================================"
         echo
         echo "Both online and offline modes failed."

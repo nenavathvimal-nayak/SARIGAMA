@@ -1,6 +1,6 @@
 @echo off
 setlocal enabledelayedexpansion
-REM ACE-Step Gradio Web UI Launcher - AMD ROCm 7.2
+REM DHAVLO MI Gradio Web UI Launcher - AMD ROCm 7.2
 REM For AMD RX 7000/6000 series GPUs on Windows 11
 REM IMPORTANT: Requires Python 3.12 (AMD ROCm 7.2 only provides Python 3.12 wheels)
 REM Requires: ROCm PyTorch from repo.radeon.com
@@ -161,7 +161,7 @@ echo.
 :SkipUpdateCheck
 
 echo ============================================
-echo   SARIGAMA - AMD ROCm 7.2 Edition
+echo   DHAVLO MI - AMD ROCm 7.2 Edition
 echo ============================================
 echo.
 
@@ -190,7 +190,7 @@ if !ERRORLEVEL! NEQ 0 (
 )
 echo.
 
-echo Starting SARIGAMA Gradio Web UI...
+echo Starting DHAVLO MI Gradio Web UI...
 echo Server will be available at: http://%SERVER_NAME%:%PORT%
 echo.
 
@@ -280,7 +280,7 @@ REM Ask for manual settings
 color 0B
 echo.
 echo ======================================================
-echo             SARIGAMA Manual Launch Mode
+echo             DHAVLO MI Manual Launch Mode
 echo ======================================================
 echo.
 :manual_choice_ask

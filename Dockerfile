@@ -1,26 +1,27 @@
 # =============================================================================
-# SARIGAMA — Generic CUDA Dockerfile
+# DHAVLO MI — Generic CUDA Dockerfile
+# DHAAVLO MUSICAL INTELLIGENCE
 # =============================================================================
 #
-# Builds SARIGAMA for x86_64 Linux servers with NVIDIA GPUs.
+# Builds DHAVLO MI for x86_64 Linux servers with NVIDIA GPUs.
 # Uses uv for fast, reproducible dependency installation.
 #
 # Build:
-#   docker build -t sarigama .
+#   docker build -t dhavlo-mi .
 #
 # Run (Gradio UI — default):
 #   docker run --gpus all -it --rm \
 #     -p 7860:7860 \
 #     -v $(pwd)/checkpoints:/app/checkpoints \
 #     -v $(pwd)/gradio_outputs:/app/gradio_outputs \
-#     sarigama
+#     dhavlo-mi
 #
 # Run (REST API server):
 #   docker run --gpus all -it --rm \
 #     -p 8001:8001 \
 #     -v $(pwd)/checkpoints:/app/checkpoints \
 #     -e ACESTEP_MODE=api \
-#     sarigama
+#     dhavlo-mi
 #
 # =============================================================================
 
@@ -108,7 +109,7 @@ COPY <<'ENTRYPOINT_EOF' /app/docker-entrypoint.sh
 set -e
 
 echo "==========================================="
-echo "  SARIGAMA — AI-Powered Music Creation Studio"
+echo "  DHAVLO MI — AI-Powered Music Intelligence"
 echo "==========================================="
 echo "Mode      : ${ACESTEP_MODE}"
 echo "Python    : $(uv run python --version 2>&1)"

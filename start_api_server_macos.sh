@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# ACE-Step REST API Server Launcher - macOS (Apple Silicon / MLX)
+# DHAVLO MI REST API Server Launcher - macOS (Apple Silicon / MLX)
 # This script launches the REST API server using the MLX backend
 # for native Apple Silicon acceleration.
 #
@@ -131,7 +131,7 @@ _startup_update_check() {
 _startup_update_check
 
 echo "============================================"
-echo "  SARIGAMA API - macOS Apple Silicon (MLX)"
+echo "  DHAVLO MI API - macOS Apple Silicon (MLX)"
 echo "============================================"
 echo
 echo "API will be available at: http://${HOST}:${PORT}"
@@ -176,7 +176,7 @@ if [[ -f "$SCRIPT_DIR/python_embedded/bin/python3.11" ]]; then
             fi
         fi
 
-        echo "Starting SARIGAMA API Server..."
+        echo "Starting DHAVLO MI API Server..."
         echo
 
         # Build command with optional parameters
@@ -210,7 +210,7 @@ if ! command -v uv &>/dev/null; then
     echo "uv package manager not found!"
     echo "========================================"
     echo
-    echo "SARIGAMA requires the uv package manager."
+    echo "DHAVLO MI requires the uv package manager."
     echo
     read -rp "Install uv now? (Y/N): " INSTALL_UV
 
@@ -274,7 +274,7 @@ if [[ ! -d "$SCRIPT_DIR/.venv" ]]; then
     echo
 fi
 
-echo "Starting SARIGAMA API Server (MLX backend)..."
+echo "Starting DHAVLO MI API Server (MLX backend)..."
 echo
 
 # Build command with optional parameters
@@ -290,7 +290,7 @@ cd "$SCRIPT_DIR" && uv run "${ACESTEP_ARGS[@]}" || {
     uv run --offline "${ACESTEP_ARGS[@]}" || {
         echo
         echo "========================================"
-        echo "[Error] Failed to start SARIGAMA API Server"
+        echo "[Error] Failed to start DHAVLO MI API Server"
         echo "========================================"
         echo
         echo "Both online and offline modes failed."

@@ -140,7 +140,7 @@ class ModelServiceRoutesHttpTests(unittest.TestCase):
         self.assertEqual(200, response.status_code)
         payload = response.json()
         self.assertEqual(200, payload["code"])
-        self.assertEqual("SARIGAMA API", payload["data"]["service"])
+        self.assertEqual("DHAVLO MI API", payload["data"]["service"])
 
     def test_init_route_returns_wrapped_success(self):
         """POST /v1/init should return wrapped success payload."""

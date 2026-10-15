@@ -1,8 +1,9 @@
 # =============================================================================
-# SARIGAMA — NVIDIA Jetson Dockerfile
+# DHAVLO MI — NVIDIA Jetson Dockerfile
+# DHAAVLO MUSICAL INTELLIGENCE
 # =============================================================================
 #
-# Builds SARIGAMA with GPU acceleration for NVIDIA Jetson platforms.
+# Builds DHAVLO MI with GPU acceleration for NVIDIA Jetson platforms.
 #
 # Supported hardware:
 #   - Jetson Orin Nano  (4/8 GB unified memory)
@@ -16,34 +17,34 @@
 #   - Docker with BuildKit (Docker >= 20.10)
 #
 # Build:
-#   docker build -f Dockerfile.jetson -t sarigama-jetson .
+#   docker build -f Dockerfile.jetson -t dhavlo-mi-jetson .
 #
 # Run (Gradio UI — default, models pre-loaded at startup):
 #   docker run --runtime nvidia -it --rm \
 #     -p 7860:7860 \
 #     -v $(pwd)/checkpoints:/app/checkpoints \
 #     -v $(pwd)/gradio_outputs:/app/gradio_outputs \
-#     sarigama-jetson
+#     dhavlo-mi-jetson
 #
 # Run (REST API server):
 #   docker run --runtime nvidia -it --rm \
 #     -p 8001:8001 \
 #     -v $(pwd)/checkpoints:/app/checkpoints \
 #     -e ACESTEP_MODE=api \
-#     sarigama-jetson
+#     dhavlo-mi-jetson
 #
 # Run without pre-initialization (deferred to UI "Initialize" button):
 #   docker run --runtime nvidia -it --rm \
 #     -p 7860:7860 \
 #     -v $(pwd)/checkpoints:/app/checkpoints \
 #     -e ACESTEP_INIT_SERVICE=false \
-#     sarigama-jetson
+#     dhavlo-mi-jetson
 #
 # ---- JetPack 5.x (Xavier) ----
 # Override build args for JetPack 5:
 #   docker build -f Dockerfile.jetson \
 #     --build-arg L4T_VERSION=r35.5.0 \
-#     -t sarigama-jetson-jp5 .
+#     -t dhavlo-mi-jetson-jp5 .
 #
 # =============================================================================
 
@@ -290,7 +291,7 @@ COPY <<'EOF' /app/docker-entrypoint.sh
 set -e
 
 echo "==========================================="
-echo "  SARIGAMA — NVIDIA Jetson Container"
+echo "  DHAVLO MI — NVIDIA Jetson Container"
 echo "==========================================="
 echo "Mode      : ${ACESTEP_MODE}"
 echo "Python    : $(python --version 2>&1)"

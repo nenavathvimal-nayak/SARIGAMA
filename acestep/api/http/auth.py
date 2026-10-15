@@ -18,7 +18,8 @@ def is_production_mode() -> bool:
         True if running in production mode, False otherwise.
     """
     env = (
-        os.getenv("SARIGAMA_ENV")
+        os.getenv("DHAVLO_MI_ENV")
+        or os.getenv("SARIGAMA_ENV")
         or os.getenv("ACESTEP_ENV")
         or os.getenv("ENVIRONMENT")
         or os.getenv("ENV")

@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# ACE-Step Gradio Web UI Launcher - Linux AMD ROCm
+# DHAVLO MI Gradio Web UI Launcher - Linux AMD ROCm
 # For AMD RX 7000/6000 series GPUs on Linux
 # Requires: ROCm 6.x+ and ROCm PyTorch from https://pytorch.org/
 #
@@ -203,7 +203,7 @@ _startup_update_check() {
 _startup_update_check
 
 echo "============================================"
-echo "  SARIGAMA - Linux AMD ROCm Edition"
+echo "  DHAVLO MI - Linux AMD ROCm Edition"
 echo "============================================"
 echo
 
@@ -243,7 +243,7 @@ print(f'HIP: {hip}' if hip else 'WARNING: Not a ROCm build')
 fi
 echo
 
-echo "Starting SARIGAMA Gradio Web UI..."
+echo "Starting DHAVLO MI Gradio Web UI..."
 echo "Server will be available at: http://${SERVER_NAME}:${PORT}"
 echo
 

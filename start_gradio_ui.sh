@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
-# ACE-Step Gradio Web UI Launcher - Linux (CUDA)
-# This script launches the Gradio web interface for ACE-Step
+# DHAVLO MI Gradio Web UI Launcher - Linux (CUDA)
+# This script launches the Gradio web interface for DHAVLO MI
 
 set -euo pipefail
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
@@ -200,7 +200,7 @@ _startup_update_check() {
 }
 _startup_update_check
 
-echo "Starting SARIGAMA Gradio Web UI..."
+echo "Starting DHAVLO MI Gradio Web UI..."
 echo "Server will be available at: http://${SERVER_NAME}:${PORT}"
 echo
 
@@ -225,7 +225,7 @@ if ! command -v uv &>/dev/null; then
     echo "uv package manager not found!"
     echo "========================================"
     echo
-    echo "SARIGAMA requires the uv package manager."
+    echo "DHAVLO MI requires the uv package manager."
     echo
     read -rp "Install uv now? (Y/N): " INSTALL_UV
 
@@ -270,7 +270,7 @@ if ! command -v uv &>/dev/null; then
         echo
         echo "Installation cancelled."
         echo
-        echo "To use SARIGAMA, please install uv:"
+        echo "To use DHAVLO MI, please install uv:"
         echo "  curl -LsSf https://astral.sh/uv/install.sh | sh"
         echo
         exit 1
@@ -361,7 +361,7 @@ fi
 
 _ensure_legacy_nvidia_torch_compat
 
-echo "Starting SARIGAMA Gradio UI..."
+echo "Starting DHAVLO MI Gradio UI..."
 echo
 
 # Build command with optional parameters
@@ -386,7 +386,7 @@ cd "$SCRIPT_DIR" && uv run --no-sync $ACESTEP_ARGS || {
     uv run --offline --no-sync $ACESTEP_ARGS || {
         echo
         echo "========================================"
-        echo "[Error] Failed to start SARIGAMA"
+        echo "[Error] Failed to start DHAVLO MI"
         echo "========================================"
         echo
         echo "Both online and offline modes failed."

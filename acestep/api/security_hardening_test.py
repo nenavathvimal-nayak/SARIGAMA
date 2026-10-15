@@ -1,4 +1,4 @@
-"""Comprehensive Phase 2 security hardening regression tests for SARIGAMA."""
+"""Comprehensive Phase 2 security hardening regression tests for DHAVLO MI."""
 
 from __future__ import annotations
 
@@ -90,7 +90,7 @@ class SecurityHardeningTests(unittest.TestCase):
 
     def test_production_fails_closed_when_key_is_missing(self) -> None:
         """In production mode, unconfigured auth must fail closed (raise HTTP 500)."""
-        with mock.patch.dict(os.environ, {"SARIGAMA_ENV": "production"}):
+        with mock.patch.dict(os.environ, {"DHAVLO_MI_ENV": "production"}):
             self.assertTrue(is_production_mode())
             set_api_key(None)
 
@@ -103,9 +103,13 @@ class SecurityHardeningTests(unittest.TestCase):
                 asyncio.run(verify_api_key(authorization=None))
             self.assertEqual(500, ctx2.exception.status_code)
 
+        # Verify backward compatibility fallback
+        with mock.patch.dict(os.environ, {"DHAVLO_MI_ENV": "", "SARIGAMA_ENV": "production"}):
+            self.assertTrue(is_production_mode())
+
     def test_development_allows_unauthenticated_access_when_unset(self) -> None:
         """In development mode, omitting the API key allows open testing."""
-        with mock.patch.dict(os.environ, {"SARIGAMA_ENV": "development"}):
+        with mock.patch.dict(os.environ, {"DHAVLO_MI_ENV": "development"}):
             self.assertFalse(is_production_mode())
             set_api_key(None)
             self.assertIsNone(verify_token_from_request({}))
@@ -163,11 +167,18 @@ class SecurityHardeningTests(unittest.TestCase):
         oversized_data = b"A" * (2 * 1024 * 1024)  # 2MB
         upload = _MockUploadFile(data=oversized_data, filename="clip.wav")
 
-        with mock.patch.dict(os.environ, {"SARIGAMA_MAX_UPLOAD_SIZE_MB": "1"}):
+        with mock.patch.dict(os.environ, {"DHAVLO_MI_MAX_UPLOAD_SIZE_MB": "1"}):
             with self.assertRaises(HTTPException) as ctx:
                 asyncio.run(save_upload_to_temp(upload, prefix="test"))
             self.assertEqual(413, ctx.exception.status_code)
             self.assertIn("exceeds maximum permitted size", str(ctx.exception.detail))
+
+        # Test fallback
+        upload2 = _MockUploadFile(data=oversized_data, filename="clip2.wav")
+        with mock.patch.dict(os.environ, {"DHAVLO_MI_MAX_UPLOAD_SIZE_MB": "", "SARIGAMA_MAX_UPLOAD_SIZE_MB": "1"}):
+            with self.assertRaises(HTTPException) as ctx:
+                asyncio.run(save_upload_to_temp(upload2, prefix="test"))
+            self.assertEqual(413, ctx.exception.status_code)
 
     def test_model_download_path_traversal_rejection(self) -> None:
         """ensure_model_downloaded must sanitize model_name against path escape."""

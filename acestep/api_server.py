@@ -190,7 +190,11 @@ def create_app() -> FastAPI:
     store = _JobStore()
 
     # API Key authentication (from environment variable)
-    api_key = os.getenv("SARIGAMA_API_KEY") or os.getenv("ACESTEP_API_KEY", None)
+    api_key = (
+        os.getenv("DHAVLO_MI_API_KEY")
+        or os.getenv("SARIGAMA_API_KEY")
+        or os.getenv("ACESTEP_API_KEY", None)
+    )
     set_api_key(api_key)
 
     QUEUE_MAXSIZE = int(os.getenv("ACESTEP_QUEUE_MAXSIZE", "200"))
@@ -314,7 +318,7 @@ def create_app() -> FastAPI:
                 executor=executor,
             )
 
-    app = FastAPI(title="SARIGAMA API", version="1.5.0", lifespan=lifespan)
+    app = FastAPI(title="DHAVLO MI API", version="1.5.0", lifespan=lifespan)
 
     configure_api_routes(
         app=app,

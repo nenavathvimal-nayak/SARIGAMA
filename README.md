@@ -1,10 +1,10 @@
-<h1 align="center">🎵 SARIGAMA</h1>
-<h3 align="center">SARIGAMA — AI-Powered Music Creation Studio</h3>
+<h1 align="center">🎵 DHAAVLO MUSICAL INTELLIGENCE</h1>
+<h3 align="center">DHAVLO MI — AI-Powered Music Intelligence and Generation Platform</h3>
 <p align="center">
     <b>Transform text descriptions, emotions, and lyrics into studio-quality musical compositions.</b>
 </p>
 <p align="center">
-    <img src="./assets/sarigama_banner.svg" width="100%" alt="SARIGAMA — AI Music Platform">
+    <img src="./assets/dhavlo_mi_banner.svg" width="100%" alt="DHAVLO MI — DHAAVLO MUSICAL INTELLIGENCE">
 </p>
 <p align="center">
     <a href="https://github.com/nenavathvimal-nayak/SARIGAMA">GitHub Repository</a> |
@@ -17,7 +17,7 @@
 
 ## 📰 News
 
-- **🎉 SARIGAMA Released!** — Introducing SARIGAMA, an advanced open-source AI music generation foundation model bringing commercial-grade music creation to local GPUs. Features full song generation from text & lyrics, style reference audio, cover generation, audio repainting, stem extraction, and customizable LoRA training.
+- **🎉 DHAVLO MI Released!** — Introducing DHAAVLO MUSICAL INTELLIGENCE (DHAVLO MI), an advanced AI music generation platform bringing commercial-grade music creation to local GPUs. Features full song generation from text & lyrics, style reference audio, cover generation, audio repainting, stem extraction, and customizable LoRA training.
 
 ## Table of Contents
 
@@ -32,11 +32,11 @@
 - [🔬 Benchmark](#-benchmark)
 
 ## 📝 Abstract
-🚀 We present **SARIGAMA**, a next-generation open-source music foundation model (built upon the cutting-edge ACE-Step architecture) that brings commercial-grade AI music generation to consumer hardware. On commonly used evaluation metrics, SARIGAMA achieves quality beyond most commercial music models while remaining extremely fast—under 2 seconds per full song on an A100 and under 10 seconds on an RTX 3090. The model runs locally with less than 4GB of VRAM, and supports lightweight personalization: users can train a LoRA from just a few songs to capture their own style.
+🚀 We present **DHAAVLO MUSICAL INTELLIGENCE (DHAVLO MI)**, an AI-powered music intelligence and generation platform (built upon foundational diffusion transformer architectures) that brings commercial-grade AI music generation to consumer hardware. On commonly used evaluation metrics, DHAVLO MI achieves quality beyond most commercial music models while remaining extremely fast—under 2 seconds per full song on an A100 and under 10 seconds on an RTX 3090. The model runs locally with less than 4GB of VRAM, and supports lightweight personalization: users can train a LoRA from just a few songs to capture their own style.
 
 🌉 At its core lies a novel hybrid architecture where the Language Model (LM) functions as an omni-capable planner: it transforms simple user queries into comprehensive song blueprints—scaling from short loops to 10-minute compositions—while synthesizing metadata, lyrics, and captions via Chain-of-Thought to guide the Diffusion Transformer (DiT). ⚡ Uniquely, this alignment is achieved through intrinsic reinforcement learning relying solely on the model's internal mechanisms, thereby eliminating the biases inherent in external reward models or human preferences. 🎚️
 
-🔮 Beyond standard synthesis, SARIGAMA unifies precise stylistic control with versatile editing capabilities—such as cover generation, repainting, and vocal-to-BGM conversion—while maintaining strict adherence to prompts across 50+ languages. This paves the way for powerful tools that seamlessly integrate into the creative workflows of music artists, producers, and content creators. 🎸
+🔮 Beyond standard synthesis, DHAVLO MI unifies precise stylistic control with versatile editing capabilities—such as cover generation, repainting, and vocal-to-BGM conversion—while maintaining strict adherence to prompts across 50+ languages. This paves the way for powerful tools that seamlessly integrate into the creative workflows of music artists, producers, and content creators. 🎸
 
 
 ## ✨ Features
@@ -74,7 +74,7 @@
 | ✅ Quality Scoring | Automatic quality assessment for generated audio |
 
 ## 🔔 Staying ahead
-Star SARIGAMA on GitHub and be instantly notified of new releases
+Star DHAVLO MI on GitHub and be instantly notified of new releases
 ![](assets/star.gif)
 
 ## 🤝 Partners
@@ -104,12 +104,12 @@ cd SARIGAMA
 uv sync
 
 # 3. Launch Gradio UI (models auto-download on first run)
-uv run sarigama
-# or: uv run acestep
+uv run dhavlo-mi
+# or: uv run sarigama / uv run acestep
 
 # Or launch REST API server
-uv run sarigama-api
-# or: uv run acestep-api
+uv run dhavlo-mi-api
+# or: uv run sarigama-api / uv run acestep-api
 ```
 
 Open http://localhost:7860 (Gradio) or http://localhost:8001 (API).

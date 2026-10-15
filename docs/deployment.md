@@ -1,7 +1,7 @@
-# SARIGAMA Production Deployment Guide
+# DHAAVLO MUSICAL INTELLIGENCE (DHAVLO MI) Production Deployment Guide
 
 ## 1. Overview & System Requirements
-SARIGAMA is designed for high-performance AI music generation. In production, it should be deployed on dedicated hardware with hardware acceleration:
+DHAAVLO MUSICAL INTELLIGENCE (DHAVLO MI) is an AI-powered music intelligence and generation platform designed for high-performance synthesis. In production, it should be deployed on dedicated hardware with hardware acceleration:
 
 - **Nvidia GPU**: CUDA 12.x, minimum 8GB VRAM (16GB+ recommended for LLM thinking mode).
 - **Apple Silicon**: M1/M2/M3/M4 with unified memory (Metal / MLX).
@@ -24,44 +24,44 @@ chmod 600 .env
 ### Essential Production Variables
 ```ini
 # Declare production mode (enforces strict auth and fail-closed security)
-SARIGAMA_ENV=production
+DHAVLO_MI_ENV=production
 
 # High-entropy API key for all protected routes
-SARIGAMA_API_KEY=your-32-char-random-secret-key-here
+DHAVLO_MI_API_KEY=your-32-char-random-secret-key-here
 
 # Upload size limit (default 50MB)
-SARIGAMA_MAX_UPLOAD_SIZE_MB=50
+DHAVLO_MI_MAX_UPLOAD_SIZE_MB=50
 
 # CORS Whitelist (comma-separated allowed origins)
-SARIGAMA_CORS_ORIGINS=https://app.yourdomain.com
+DHAVLO_MI_CORS_ORIGINS=https://app.yourdomain.com
 
 # Queue and Worker Configuration (keep 1 worker per GPU)
 ACESTEP_QUEUE_MAXSIZE=200
 ACESTEP_QUEUE_WORKERS=1
 
 # Storage directory for checkpoints
-ACESTEP_CHECKPOINTS_DIR=/opt/sarigama/models
+ACESTEP_CHECKPOINTS_DIR=/opt/dhavlo-mi/models
 ```
 
 ---
 
 ## 3. Reverse Proxy Architecture (Recommended)
 
-In production, run SARIGAMA bound to `127.0.0.1:8000` and use Nginx or Caddy to terminate TLS, enforce rate limits, and proxy requests.
+In production, run DHAVLO MI bound to `127.0.0.1:8000` and use Nginx or Caddy to terminate TLS, enforce rate limits, and proxy requests.
 
 ### Sample Nginx Configuration
 ```nginx
 # Rate limiting zone: 10 requests/sec with burst of 20
-limit_req_zone $binary_remote_addr zone=sarigama_limit:10m rate=10r/s;
+limit_req_zone $binary_remote_addr zone=dhavlo_mi_limit:10m rate=10r/s;
 
 server {
     listen 443 ssl http2;
-    server_name api.sarigama.example.com;
+    server_name api.dhavlomi.example.com;
 
-    ssl_certificate /etc/letsencrypt/live/api.sarigama.example.com/fullchain.pem;
-    ssl_certificate_key /etc/letsencrypt/live/api.sarigama.example.com/privkey.pem;
+    ssl_certificate /etc/letsencrypt/live/api.dhavlomi.example.com/fullchain.pem;
+    ssl_certificate_key /etc/letsencrypt/live/api.dhavlomi.example.com/privkey.pem;
 
-    # Maximum payload size (align with SARIGAMA_MAX_UPLOAD_SIZE_MB)
+    # Maximum payload size (align with DHAVLO_MI_MAX_UPLOAD_SIZE_MB)
     client_max_body_size 60M;
 
     # Timeouts for long-running generation queries
@@ -70,7 +70,7 @@ server {
     proxy_read_timeout 300s;
 
     location / {
-        limit_req zone=sarigama_limit burst=20 nodelay;
+        limit_req zone=dhavlo_mi_limit burst=20 nodelay;
 
         proxy_pass http://127.0.0.1:8000;
         proxy_set_header Host $host;
@@ -91,20 +91,20 @@ server {
 
 ## 4. Systemd Service Setup (Linux)
 
-Create `/etc/systemd/system/sarigama.service`:
+Create `/etc/systemd/system/dhavlo-mi.service`:
 
 ```ini
 [Unit]
-Description=SARIGAMA AI Music API Service
+Description=DHAVLO MI AI Music Intelligence Service
 After=network.target
 
 [Service]
 Type=simple
-User=sarigama
-Group=sarigama
-WorkingDirectory=/opt/sarigama
-EnvironmentFile=/opt/sarigama/.env
-ExecStart=/opt/sarigama/.venv/bin/python acestep/api_server.py --port 8000
+User=dhavlomi
+Group=dhavlomi
+WorkingDirectory=/opt/dhavlo-mi
+EnvironmentFile=/opt/dhavlo-mi/.env
+ExecStart=/opt/dhavlo-mi/.venv/bin/python acestep/api_server.py --port 8000
 Restart=always
 RestartSec=5
 LimitNOFILE=65535
@@ -116,14 +116,14 @@ WantedBy=multi-user.target
 Enable and start the service:
 ```bash
 sudo systemctl daemon-reload
-sudo systemctl enable --now sarigama
+sudo systemctl enable --now dhavlo-mi
 ```
 
 ---
 
 ## 5. Health Checks & Monitoring
 
-SARIGAMA exposes two primary monitoring endpoints:
+DHAVLO MI exposes two primary monitoring endpoints:
 
 1. **Service Readiness / Health**:
    ```bash
@@ -133,7 +133,7 @@ SARIGAMA exposes two primary monitoring endpoints:
    ```json
    {
      "status": "ok",
-     "service": "SARIGAMA API",
+     "service": "DHAVLO MI API",
      "version": "1.0",
      "models_initialized": true,
      "llm_initialized": true,
@@ -141,7 +141,7 @@ SARIGAMA exposes two primary monitoring endpoints:
    }
    ```
 
-2. **Job Queue & Server Statistics** (Protected by `SARIGAMA_API_KEY`):
+2. **Job Queue & Server Statistics** (Protected by `DHAVLO_MI_API_KEY`):
    ```bash
    curl -s -H "Authorization: Bearer <API_KEY>" http://127.0.0.1:8000/v1/stats
    ```

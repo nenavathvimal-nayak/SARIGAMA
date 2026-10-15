@@ -1,8 +1,8 @@
-# ACE-Step 1.5 - GitHub Copilot Instructions
+# DHAVLO MI (DHAAVLO MUSICAL INTELLIGENCE) - GitHub Copilot Instructions
 
 ## Project Overview
 
-ACE-Step 1.5 is an open-source music foundation model combining a Language Model (LM) as a planner with a Diffusion Transformer (DiT) for audio synthesis. It generates commercial-grade music on consumer hardware (< 4GB VRAM).
+DHAVLO MI (DHAAVLO MUSICAL INTELLIGENCE) is an AI-powered music intelligence and generation platform combining a Language Model (LM) as a planner with a Diffusion Transformer (DiT) for audio synthesis, built upon the ACE-Step open-source foundation. It generates commercial-grade music on consumer hardware (< 4GB VRAM).
 
 ## Tech Stack
 

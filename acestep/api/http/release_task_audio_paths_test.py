@@ -128,7 +128,7 @@ class ReleaseTaskAudioPathsTests(unittest.TestCase):
         """save_upload_to_temp should reject uploads exceeding configured max size with 413."""
 
         upload = _FakeUpload(payload=b"A" * (2 * 1024 * 1024), filename="big.wav")
-        with mock.patch.dict(os.environ, {"SARIGAMA_MAX_UPLOAD_SIZE_MB": "1"}):
+        with mock.patch.dict(os.environ, {"DHAVLO_MI_MAX_UPLOAD_SIZE_MB": "1", "SARIGAMA_MAX_UPLOAD_SIZE_MB": "1"}):
             with self.assertRaises(HTTPException) as ctx:
                 asyncio.run(save_upload_to_temp(upload, prefix="test"))
             self.assertEqual(413, ctx.exception.status_code)

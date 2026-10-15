@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-GPU Detection Diagnostic Tool for SARIGAMA
+GPU Detection Diagnostic Tool for DHAAVLO MUSICAL INTELLIGENCE (DHAVLO MI)
 
 This script helps diagnose GPU detection issues by checking:
 - PyTorch installation and build type (CUDA/ROCm/CPU)
@@ -227,18 +227,24 @@ def check_apple_silicon_setup():
         mlx_avail = mx.metal.is_available()
         print(f"  Apple MLX Metal available: {mlx_avail}")
         if mlx_avail:
-            print("  ✓ Apple MLX native acceleration ready for SARIGAMA")
+            print("  ✓ Apple MLX native acceleration ready for DHAVLO MI")
     except ImportError:
         print("  Apple MLX not installed (optional, use 'pip install mlx mlx-lm')")
     except Exception as e:
         print(f"  MLX check error: {e}")
 
 
-def check_sarigama_env():
-    """Check SARIGAMA specific environment variables."""
-    print_section("SARIGAMA Environment Variables")
+def check_dhavlo_mi_env():
+    """Check DHAVLO MI specific environment variables."""
+    print_section("DHAVLO MI Environment Variables")
     
     relevant_vars = [
+        'DHAVLO_MI_ENV',
+        'DHAVLO_MI_API_KEY',
+        'DHAVLO_MI_MAX_UPLOAD_SIZE_MB',
+        'DHAVLO_MI_CORS_ORIGINS',
+        'SARIGAMA_ENV',
+        'SARIGAMA_API_KEY',
         'MAX_CUDA_VRAM',
         'HSA_OVERRIDE_GFX_VERSION',
         'MIOPEN_FIND_MODE',
@@ -250,14 +256,17 @@ def check_sarigama_env():
     for var in relevant_vars:
         value = os.environ.get(var)
         if value:
-            print(f"  {var} = {value}")
+            # Mask API key value for security
+            display_val = "********" if "KEY" in var else value
+            print(f"  {var} = {display_val}")
             found_any = True
     
     if not found_any:
-        print("  No SARIGAMA specific environment variables set")
+        print("  No DHAVLO MI specific environment variables set")
 
-# Backward compatibility alias
-check_ace_step_env = check_sarigama_env
+# Backward compatibility aliases
+check_sarigama_env = check_dhavlo_mi_env
+check_ace_step_env = check_dhavlo_mi_env
 
 
 def print_recommendations():
@@ -274,10 +283,10 @@ def print_recommendations():
         
         if is_available:
             print("✓ Your GPU setup appears to be working correctly!")
-            print("\nYou can now run SARIGAMA with GPU acceleration.")
+            print("\nYou can now run DHAVLO MI with GPU acceleration.")
         elif is_mps:
             print("✓ Apple Silicon GPU acceleration detected (Metal Performance Shaders / MLX)!")
-            print("\nYou can now run SARIGAMA with native Apple Silicon hardware acceleration.")
+            print("\nYou can now run DHAVLO MI with native Apple Silicon hardware acceleration.")
         elif is_rocm:
             print("❌ ROCm build detected but GPU not available")
             print("\nTroubleshooting steps for AMD GPUs:")
@@ -313,7 +322,7 @@ def print_recommendations():
 def main():
     """Main diagnostic routine."""
     print("=" * HEADER_WIDTH)
-    print("  SARIGAMA GPU Detection Diagnostic Tool")
+    print("  DHAVLO MI GPU Detection Diagnostic Tool")
     print("=" * HEADER_WIDTH)
     print("\nThis tool will help diagnose GPU detection issues.")
     print("Please share the output with support when reporting issues.")
@@ -326,7 +335,7 @@ def main():
         check_rocm_setup()
         check_nvidia_setup()
         check_apple_silicon_setup()
-        check_sarigama_env()
+        check_dhavlo_mi_env()
     
     print_recommendations()
     

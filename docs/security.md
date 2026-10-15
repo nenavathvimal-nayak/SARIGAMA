@@ -1,7 +1,7 @@
-# SARIGAMA Security Architecture & Policy
+# DHAAVLO MUSICAL INTELLIGENCE (DHAVLO MI) Security Architecture & Policy
 
 ## 1. Overview & Security Mission
-SARIGAMA is an AI music generation platform built on diffusion transformer (DiT) architectures and language models. The generation pipeline is compute- and memory-intensive; therefore, application security focuses on protecting model runtimes, preventing resource exhaustion (Denial of Service), restricting arbitrary filesystem access, and securing API endpoints.
+DHAAVLO MUSICAL INTELLIGENCE (DHAVLO MI) is an AI-powered music intelligence and generation platform built on diffusion transformer (DiT) architectures and language models. The generation pipeline is compute- and memory-intensive; therefore, application security focuses on protecting model runtimes, preventing resource exhaustion (Denial of Service), restricting arbitrary filesystem access, and securing API endpoints.
 
 ---
 
@@ -14,7 +14,7 @@ SARIGAMA is an AI music generation platform built on diffusion transformer (DiT)
 [ Reverse Proxy (Nginx/Caddy) ]  --> TLS Termination, Rate Limiting, IP Filtering
              │ (HTTP localhost:8000)
              ▼
-[ SARIGAMA FastAPI Application ]
+[ DHAVLO MI FastAPI Application ]
   ├── Auth Verification (timing-safe, fail-closed in production)
   ├── Request Validation (Pydantic bounded schemas)
   ├── File Security (extension whitelist, path traversal check, size limits)
@@ -36,18 +36,18 @@ SARIGAMA is an AI music generation platform built on diffusion transformer (DiT)
 
 ### Supported Authentication Methods
 Protected endpoints require authentication using a shared API key:
-- **Authorization Header**: `Authorization: Bearer <SARIGAMA_API_KEY>`
-- **Request Body (Legacy Compatible)**: `{"ai_token": "<SARIGAMA_API_KEY>", ...}`
+- **Authorization Header**: `Authorization: Bearer <DHAVLO_MI_API_KEY>` (or `SARIGAMA_API_KEY`)
+- **Request Body (Legacy Compatible)**: `{"ai_token": "<DHAVLO_MI_API_KEY>", ...}`
 
 ### Timing-Safe Token Verification
 All token comparisons use constant-time digest verification (`secrets.compare_digest`) to prevent timing side-channel attacks.
 
 ### Fail-Closed in Production
-- When `SARIGAMA_ENV=production`, leaving `SARIGAMA_API_KEY` unset causes the application to **fail closed**: all protected endpoint requests immediately return `HTTP 500 Authentication misconfigured`.
-- In local development (`SARIGAMA_ENV=development` or empty), omitting the API key allows open local testing.
+- When `DHAVLO_MI_ENV=production` (or `SARIGAMA_ENV=production`), leaving `DHAVLO_MI_API_KEY` unset causes the application to **fail closed**: all protected endpoint requests immediately return `HTTP 500 Authentication misconfigured`.
+- In local development (`DHAVLO_MI_ENV=development` or empty), omitting the API key allows open local testing.
 
 ### User Identity & Multi-Tenancy Boundary
-SARIGAMA currently operates as a dedicated, single-tenant or shared-secret service. Job records are ephemeral and identified by cryptographically random UUIDv4 identifiers.
+DHAVLO MI currently operates as a dedicated, single-tenant or shared-secret service. Job records are ephemeral and identified by cryptographically random UUIDv4 identifiers.
 > **Roadmap Note**: For public multi-user deployments, an external authentication layer (e.g., OAuth2, JWT with user IDs) should be placed in front of the service, binding job records to specific user identities.
 
 ---
@@ -65,7 +65,7 @@ Audio inputs are strictly validated against approved audio formats:
 - **Generated Audio Retrieval (`/v1/audio`)**: Constrained strictly within `app.state.temp_audio_dir`. Non-audio extensions and paths outside the directory return `HTTP 403` or `HTTP 400`.
 
 ### Upload Size & Disk Protection
-- Upload streaming enforces a configurable byte ceiling (default: `50MB`, controlled via `SARIGAMA_MAX_UPLOAD_SIZE_MB`).
+- Upload streaming enforces a configurable byte ceiling (default: `50MB`, controlled via `DHAVLO_MI_MAX_UPLOAD_SIZE_MB` with fallback to `SARIGAMA_MAX_UPLOAD_SIZE_MB`).
 - Exceeding the size limit halts streaming, removes partial files immediately, and returns `HTTP 413 Payload Too Large`.
 - All temporary upload files are cleaned up on error or after job completion.
 
@@ -99,19 +99,19 @@ To prevent memory bloat, GPU out-of-memory (OOM) crashes, and resource starvatio
 
 ## 7. CORS & Network Security
 
-- **CORS Configuration**: By default in development, CORS permits `localhost` and `127.0.0.1`. In production, CORS is restricted to explicitly configured origins defined in `SARIGAMA_CORS_ORIGINS`.
+- **CORS Configuration**: By default in development, CORS permits `localhost` and `127.0.0.1`. In production, CORS is restricted to explicitly configured origins defined in `DHAVLO_MI_CORS_ORIGINS` (or `SARIGAMA_CORS_ORIGINS`).
 - **Network Exposure**: In production environments, never expose `0.0.0.0:8000` directly to the public internet. Always deploy behind a hardened reverse proxy with HTTPS.
 
 ---
 
 ## 8. Incident Response & Credential Rotation
 
-If `SARIGAMA_API_KEY` is exposed:
+If `DHAVLO_MI_API_KEY` is exposed:
 1. Update `.env` with a newly generated high-entropy key:
    ```bash
    python3 -c "import secrets; print(secrets.token_urlsafe(32))"
    ```
-2. Restart the SARIGAMA API server process:
+2. Restart the DHAVLO MI API server process:
    ```bash
    pkill -f "python.*api_server.py" && bash run_api_server.sh
    ```
