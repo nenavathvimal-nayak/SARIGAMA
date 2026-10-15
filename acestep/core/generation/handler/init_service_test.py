@@ -73,6 +73,10 @@ class _Host(InitServiceMixin):
         self.use_mlx_vae = False
         self.current_offload_cost = 0.0
 
+    def _sync_alignment_config(self):
+        """Stub for lyric alignment config sync."""
+        pass
+
     def _get_project_root(self):
         """Return the fake project root path configured for the test host."""
         return self._project_root

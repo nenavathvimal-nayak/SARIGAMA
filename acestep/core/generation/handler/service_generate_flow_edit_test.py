@@ -135,14 +135,12 @@ class CoverStillRunsLmTests(unittest.TestCase):
     skipped because cover already extracts codes from the ref audio)."""
 
     def test_no_edit_in_skip_lm_tasks(self):
-        from pathlib import Path
-        src = (Path(__file__).resolve().parents[3] / "inference.py").read_text()
-        self.assertIn(
-            'skip_lm_tasks = {"cover", "cover-nofsq", "repaint", "extract"}',
-            src,
-            "edit task is removed; skip_lm_tasks should no longer mention it",
-        )
-        self.assertNotIn('"edit"', src.split("skip_lm_tasks")[1].split("\n")[0])
+        from acestep.inference import DIRECT_CONDITIONING_TASKS
+        self.assertNotIn("edit", DIRECT_CONDITIONING_TASKS)
+        self.assertIn("cover", DIRECT_CONDITIONING_TASKS)
+        self.assertIn("cover-nofsq", DIRECT_CONDITIONING_TASKS)
+        self.assertIn("repaint", DIRECT_CONDITIONING_TASKS)
+        self.assertIn("extract", DIRECT_CONDITIONING_TASKS)
 
 
 if __name__ == "__main__":
