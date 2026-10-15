@@ -23,9 +23,15 @@ def register_sample_format_routes(
     env_bool: Callable[[str, bool], bool],
     to_int: Callable[[Any, Optional[int]], Optional[int]],
     to_float: Callable[[Any, Optional[float]], Optional[float]],
-    create_sample_fn: Callable[..., Any],
+    create_sample_fn: Optional[Callable[..., Any]] = None,
 ) -> None:
     """Register random-sample and format-input routes on the FastAPI app."""
+
+    if create_sample_fn is None:
+        def _dummy_create_sample(**_kwargs: Any) -> Any:
+            raise HTTPException(status_code=501, detail="create_sample_fn not configured")
+
+        create_sample_fn = _dummy_create_sample
 
     @app.post("/create_random_sample")
     async def create_random_sample_endpoint(request: Request, authorization: Optional[str] = Header(None)):

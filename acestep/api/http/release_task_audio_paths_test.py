@@ -97,6 +97,43 @@ class ReleaseTaskAudioPathsTests(unittest.TestCase):
         open_mock().write.assert_called_once_with(b"abc123")
         self.assertTrue(upload.closed)
 
+    def test_validate_audio_path_rejects_unsupported_extensions(self):
+        """Validator should reject non-audio file extensions with 400."""
+
+        for bad_path in ["script.py", "payload.exe", "data.json", "secret.env"]:
+            with self.assertRaises(HTTPException) as ctx:
+                validate_audio_path(bad_path)
+            self.assertEqual(400, ctx.exception.status_code)
+            self.assertIn("Unsupported audio file format", str(ctx.exception.detail))
+
+    def test_validate_audio_path_rejects_hidden_files(self):
+        """Validator should reject hidden files and dot-directories with 400."""
+
+        for dot_path in [".env.wav", ".hidden/audio.mp3", "sub/.secret/clip.flac"]:
+            with self.assertRaises(HTTPException) as ctx:
+                validate_audio_path(dot_path)
+            self.assertEqual(400, ctx.exception.status_code)
+            self.assertIn("Hidden or sensitive files are not permitted", str(ctx.exception.detail))
+
+    def test_save_upload_to_temp_rejects_unsupported_extension(self):
+        """save_upload_to_temp should reject uploads without valid audio extension."""
+
+        upload = _FakeUpload(payload=b"print('malicious')", filename="exploit.py")
+        with self.assertRaises(HTTPException) as ctx:
+            asyncio.run(save_upload_to_temp(upload, prefix="test"))
+        self.assertEqual(400, ctx.exception.status_code)
+        self.assertIn("Unsupported audio file extension", str(ctx.exception.detail))
+
+    def test_save_upload_to_temp_rejects_oversized_payload(self):
+        """save_upload_to_temp should reject uploads exceeding configured max size with 413."""
+
+        upload = _FakeUpload(payload=b"A" * (2 * 1024 * 1024), filename="big.wav")
+        with mock.patch.dict(os.environ, {"SARIGAMA_MAX_UPLOAD_SIZE_MB": "1"}):
+            with self.assertRaises(HTTPException) as ctx:
+                asyncio.run(save_upload_to_temp(upload, prefix="test"))
+            self.assertEqual(413, ctx.exception.status_code)
+            self.assertIn("exceeds maximum permitted size", str(ctx.exception.detail))
+
 
 if __name__ == "__main__":
     unittest.main()

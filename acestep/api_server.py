@@ -190,7 +190,7 @@ def create_app() -> FastAPI:
     store = _JobStore()
 
     # API Key authentication (from environment variable)
-    api_key = os.getenv("ACESTEP_API_KEY", None)
+    api_key = os.getenv("SARIGAMA_API_KEY") or os.getenv("ACESTEP_API_KEY", None)
     set_api_key(api_key)
 
     QUEUE_MAXSIZE = int(os.getenv("ACESTEP_QUEUE_MAXSIZE", "200"))

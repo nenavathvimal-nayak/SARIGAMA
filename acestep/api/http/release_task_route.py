@@ -63,7 +63,6 @@ def register_release_task_route(
             lm_default_top_p=lm_default_top_p,
         )
 
-        record = store.create()
         queue_ref: asyncio.Queue = app.state.job_queue
         if queue_ref.full():
             for temp_path in temp_files:
@@ -72,6 +71,8 @@ def register_release_task_route(
                 except Exception:
                     pass
             raise HTTPException(status_code=429, detail="Server busy: queue is full")
+
+        record = store.create()
 
         if temp_files:
             async with app.state.job_temp_files_lock:

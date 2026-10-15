@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import os
+import re
 
 
 MODEL_REPO_MAPPING = {
@@ -95,7 +96,17 @@ def download_from_modelscope(repo_id: str, local_dir: str, model_name: str) -> s
 def ensure_model_downloaded(model_name: str, checkpoint_dir: str) -> str:
     """Ensure model exists locally, downloading from configured source if missing."""
 
+    if not model_name or ".." in model_name or not re.match(r"^[a-zA-Z0-9_\-\.]+$", model_name):
+        raise ValueError(f"Invalid model name for download: {model_name!r}")
+
     model_path = os.path.join(checkpoint_dir, model_name)
+    real_cp = os.path.realpath(checkpoint_dir)
+    real_model = os.path.realpath(model_path)
+    try:
+        if os.path.commonpath([real_cp, real_model]) != real_cp:
+            raise ValueError(f"Model path escapes checkpoint directory: {model_name!r}")
+    except ValueError:
+        raise ValueError(f"Invalid model path resolution: {model_name!r}")
 
     if os.path.exists(model_path) and os.listdir(model_path):
         print(f"[Model Download] Model {model_name} already exists at {model_path}")

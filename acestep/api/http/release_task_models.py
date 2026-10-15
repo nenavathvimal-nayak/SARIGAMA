@@ -16,9 +16,9 @@ class GenerateMusicRequest(BaseModel):
     clients remain compatible while route handling is decomposed.
     """
 
-    prompt: str = Field(default="", description="Text prompt describing the music (local/per-track description for lego SFT)")
-    global_caption: str = Field(default="", description="Global song description for SFT-stems lego tasks (full song context)")
-    lyrics: str = Field(default="", description="Lyric text")
+    prompt: str = Field(default="", max_length=4096, description="Text prompt describing the music (local/per-track description for lego SFT)")
+    global_caption: str = Field(default="", max_length=4096, description="Global song description for SFT-stems lego tasks (full song context)")
+    lyrics: str = Field(default="", max_length=32768, description="Lyric text")
 
     # New API semantics:
     # - thinking=True: use 5Hz LM to generate audio codes (lm-dit behavior)
@@ -28,47 +28,54 @@ class GenerateMusicRequest(BaseModel):
     # Sample-mode requests auto-generate caption/lyrics/metas via LM (no user prompt).
     sample_mode: bool = False
     # Description for sample mode: auto-generate caption/lyrics from description query
-    sample_query: str = Field(default="", description="Query/description for sample mode (use create_sample)")
+    sample_query: str = Field(default="", max_length=2048, description="Query/description for sample mode (use create_sample)")
     # Whether to use format_sample() to enhance input caption/lyrics
     use_format: bool = Field(default=False, description="Use format_sample() to enhance input (default: False)")
     # Model name for multi-model support (select which DiT model to use)
     model: Optional[str] = Field(default=None, description="Model name to use (e.g., 'acestep-v15-turbo')")
 
-    bpm: Optional[int] = None
-    key_scale: str = ""
-    time_signature: str = ""
-    vocal_language: str = "en"
-    inference_steps: int = 8
-    guidance_scale: float = 7.0
+    bpm: Optional[int] = Field(default=None, ge=20, le=300, description="Tempo in beats per minute")
+    key_scale: str = Field(default="", max_length=32)
+    time_signature: str = Field(default="", max_length=16)
+    vocal_language: str = Field(default="en", max_length=32)
+    inference_steps: int = Field(default=8, ge=1, le=200, description="Diffusion inference steps (1-200)")
+    guidance_scale: float = Field(default=7.0, ge=0.0, le=50.0, description="Classifier-free guidance scale")
     use_random_seed: bool = True
     seed: Union[int, str] = -1
 
     reference_audio_path: Optional[str] = None
     src_audio_path: Optional[str] = None
-    audio_duration: Optional[float] = None
-    batch_size: Optional[int] = None
+    audio_duration: Optional[float] = Field(default=None, ge=-1.0, le=600.0, description="Audio duration in seconds (-1.0 to 600.0)")
+    batch_size: Optional[int] = Field(default=None, ge=1, le=8, description="Batch size for parallel generation (1-8)")
 
-    repainting_start: float = 0.0
-    repainting_end: Optional[float] = None
+    repainting_start: float = Field(default=0.0, ge=0.0)
+    repainting_end: Optional[float] = Field(default=None, ge=0.0)
 
-    instruction: str = DEFAULT_DIT_INSTRUCTION
-    audio_cover_strength: float = 1.0
+    instruction: str = Field(default=DEFAULT_DIT_INSTRUCTION, max_length=1024)
+    audio_cover_strength: float = Field(default=1.0, ge=0.0, le=1.0)
     cover_noise_strength: float = Field(
         default=0.0,
+        ge=0.0,
+        le=1.0,
         description="Cover noise blending strength (0.0=pure noise, 1.0=closest to source audio). Used for cover/repaint tasks.",
     )
     audio_code_string: str = Field(
         default="",
+        max_length=65536,
         description="User-provided audio semantic codes string for code-control generation. When non-empty, skips LM code generation.",
     )
     task_type: str = "text2music"
     chunk_mask_mode: Literal["explicit", "auto"] = "auto"
     repaint_latent_crossfade_frames: int = Field(
         default=10,
+        ge=0,
+        le=250,
         description="Latent-level boundary blend width in frames (25Hz, 10~0.4s)",
     )
     repaint_wav_crossfade_sec: float = Field(
         default=0.0,
+        ge=0.0,
+        le=10.0,
         description="Waveform-level splice crossfade in seconds (0=hard cut)",
     )
     repaint_mode: Literal["conservative", "balanced", "aggressive"] = Field(
@@ -91,6 +98,8 @@ class GenerateMusicRequest(BaseModel):
     infer_method: str = "ode"  # "ode" or "sde" - diffusion inference method
     shift: float = Field(
         default=3.0,
+        ge=0.1,
+        le=20.0,
         description="Timestep shift factor (range 1.0~5.0, default 3.0). Only effective for base models, not turbo models.",
     )
     timesteps: Optional[str] = Field(
@@ -138,8 +147,7 @@ class GenerateMusicRequest(BaseModel):
     lm_repetition_penalty: float = 1.0
     lm_negative_prompt: str = "NO USER INPUT"
 
-    class Config:
-        """Legacy pydantic config preserving prior population semantics."""
-
-        allow_population_by_field_name = True
-        allow_population_by_alias = True
+    model_config = {
+        "populate_by_name": True,
+        "extra": "ignore",
+    }

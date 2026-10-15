@@ -2,6 +2,7 @@
 
 import asyncio
 import time
+from typing import Any
 import unittest
 from types import SimpleNamespace
 
@@ -19,10 +20,10 @@ class _FakeParser:
 
         self._values = values
 
-    def get(self, key: str):
+    def get(self, key: str, default: Any = None) -> Any:
         """Return raw value for ``key`` from parser payload."""
 
-        return self._values.get(key)
+        return self._values.get(key, default)
 
     def str(self, key: str, default: str = "") -> str:
         """Return string value for ``key`` with default fallback."""

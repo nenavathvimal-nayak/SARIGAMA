@@ -35,8 +35,8 @@ def run_api_server_main(
     parser.add_argument(
         "--api-key",
         type=str,
-        default=os.getenv("ACESTEP_API_KEY", None),
-        help="API key for authentication (default from ACESTEP_API_KEY)",
+        default=os.getenv("SARIGAMA_API_KEY") or os.getenv("ACESTEP_API_KEY", None),
+        help="API key for authentication (default from SARIGAMA_API_KEY or ACESTEP_API_KEY)",
     )
     parser.add_argument(
         "--download-source",
@@ -68,6 +68,7 @@ def run_api_server_main(
     args = parser.parse_args(args=argv)
 
     if args.api_key:
+        os.environ["SARIGAMA_API_KEY"] = args.api_key
         os.environ["ACESTEP_API_KEY"] = args.api_key
 
     if args.download_source and args.download_source != "auto":

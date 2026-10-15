@@ -129,6 +129,28 @@ class ModelDownloadTests(unittest.TestCase):
         ms_mock.assert_called_once()
         hf_mock.assert_called_once()
 
+    def test_ensure_model_downloaded_rejects_path_traversal(self):
+        """ensure_model_downloaded must reject path traversal sequences."""
+
+        import tempfile
+
+        with tempfile.TemporaryDirectory() as tmp_dir:
+            for bad_name in ["../escape", "sub/../../etc/passwd", "..\\win_escape", ""]:
+                with self.assertRaises(ValueError) as ctx:
+                    model_download.ensure_model_downloaded(bad_name, tmp_dir)
+                self.assertIn("Invalid model name", str(ctx.exception))
+
+    def test_ensure_model_downloaded_rejects_special_characters(self):
+        """ensure_model_downloaded must reject shell metacharacters and slashes."""
+
+        import tempfile
+
+        with tempfile.TemporaryDirectory() as tmp_dir:
+            for bad_name in ["model;rm -rf /", "model|sh", "model/subdir", "model\\subdir"]:
+                with self.assertRaises(ValueError) as ctx:
+                    model_download.ensure_model_downloaded(bad_name, tmp_dir)
+                self.assertIn("Invalid model name", str(ctx.exception))
+
 
 if __name__ == "__main__":
     unittest.main()

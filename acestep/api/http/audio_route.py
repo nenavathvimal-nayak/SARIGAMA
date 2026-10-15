@@ -8,6 +8,17 @@ from typing import Any, Callable
 from fastapi import Depends, FastAPI, HTTPException, Request
 
 
+ALLOWED_AUDIO_EXTENSIONS: dict[str, str] = {
+    ".mp3": "audio/mpeg",
+    ".wav": "audio/wav",
+    ".flac": "audio/flac",
+    ".ogg": "audio/ogg",
+    ".m4a": "audio/mp4",
+    ".aac": "audio/aac",
+    ".opus": "audio/opus",
+}
+
+
 def register_audio_route(
     app: FastAPI,
     verify_api_key: Callable[..., Any],
@@ -26,14 +37,12 @@ def register_audio_route(
             resolved_path.relative_to(allowed_dir)
         except ValueError:
             raise HTTPException(status_code=403, detail="Access denied: path outside allowed directory")
+
         if not resolved_path.is_file():
             raise HTTPException(status_code=404, detail="Audio file not found")
 
         ext = resolved_path.suffix.lower()
-        media_types = {
-            ".mp3": "audio/mpeg",
-            ".wav": "audio/wav",
-            ".flac": "audio/flac",
-            ".ogg": "audio/ogg",
-        }
-        return FileResponse(str(resolved_path), media_type=media_types.get(ext, "audio/mpeg"))
+        if ext not in ALLOWED_AUDIO_EXTENSIONS:
+            raise HTTPException(status_code=400, detail="Invalid audio file type")
+
+        return FileResponse(str(resolved_path), media_type=ALLOWED_AUDIO_EXTENSIONS[ext])

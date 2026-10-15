@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 
+import os
 from functools import partial
 from typing import Any, Callable, Dict, List, Optional
 
@@ -59,10 +60,19 @@ def configure_api_routes(
 ) -> None:
     """Configure middleware, compatibility router, and all API route modules."""
 
+    custom_origins_env = os.getenv("SARIGAMA_CORS_ORIGINS") or os.getenv("ACESTEP_CORS_ORIGINS")
+    if custom_origins_env:
+        cors_origins = [o.strip() for o in custom_origins_env.split(",") if o.strip()]
+        cors_regex = None
+    else:
+        is_prod = (os.getenv("SARIGAMA_ENV") or os.getenv("ACESTEP_ENV") or "").strip().lower() in ("production", "prod")
+        cors_origins = [] if is_prod else ["null", "http://localhost", "http://127.0.0.1"]
+        cors_regex = None if is_prod else r"^https?://(localhost|127\.0\.0\.1)(:\d+)?$"
+
     app.add_middleware(
         CORSMiddleware,
-        allow_origins=["null", "http://localhost", "http://127.0.0.1"],
-        allow_origin_regex=r"^https?://(localhost|127\.0\.0\.1)(:\d+)?$",
+        allow_origins=cors_origins,
+        allow_origin_regex=cors_regex,
         allow_methods=["GET", "POST", "OPTIONS"],
         allow_headers=["Content-Type", "Authorization"],
     )

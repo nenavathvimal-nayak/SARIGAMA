@@ -151,7 +151,7 @@ def register_model_service_routes(
         return wrap_response(
             {
                 "status": "ok",
-                "service": "ACE-Step API",
+                "service": "SARIGAMA API",
                 "version": "1.0",
                 "models_initialized": bool(getattr(app.state, "_initialized", False)),
                 "llm_initialized": inventory["llm_initialized"],

@@ -6,6 +6,7 @@ import atexit
 import json
 import os
 import random
+import secrets
 import time
 from threading import Lock
 from typing import Any, Dict, List, Optional
@@ -61,7 +62,7 @@ def verify_token_from_request(body: dict, authorization: Optional[str] = None) -
     # Try ai_token from body first
     ai_token = body.get("ai_token") if body else None
     if ai_token:
-        if ai_token == key:
+        if isinstance(ai_token, str) and secrets.compare_digest(ai_token, key):
             return ai_token
         raise HTTPException(status_code=401, detail="Invalid ai_token")
 
@@ -71,7 +72,7 @@ def verify_token_from_request(body: dict, authorization: Optional[str] = None) -
             token = authorization[7:]
         else:
             token = authorization
-        if token == key:
+        if isinstance(token, str) and secrets.compare_digest(token, key):
             return token
         raise HTTPException(status_code=401, detail="Invalid API key")
 
@@ -94,7 +95,7 @@ async def verify_api_key(authorization: Optional[str] = Header(None)):
     else:
         token = authorization
 
-    if token != key:
+    if not isinstance(token, str) or not secrets.compare_digest(token, key):
         raise HTTPException(status_code=401, detail="Invalid API key")
 
 

@@ -79,6 +79,61 @@ class AuthHelpersTests(unittest.TestCase):
 
         asyncio.run(verify_api_key(authorization="Bearer secret"))
 
+    def test_get_api_key_returns_configured_key(self) -> None:
+        """get_api_key should return the currently configured API key."""
+
+        set_api_key("test-key-123")
+        from acestep.api.http.auth import get_api_key
+
+        self.assertEqual("test-key-123", get_api_key())
+
+    def test_verify_token_fails_closed_in_production_when_unconfigured(self) -> None:
+        """Unconfigured auth in production mode must fail closed (raise 500)."""
+
+        import os
+
+        old_env = os.environ.get("SARIGAMA_ENV")
+        try:
+            os.environ["SARIGAMA_ENV"] = "production"
+            set_api_key(None)
+            with self.assertRaises(HTTPException) as ctx:
+                verify_token_from_request(body={}, authorization=None)
+            self.assertEqual(500, ctx.exception.status_code)
+            self.assertIn("API key required in production", ctx.exception.detail)
+        finally:
+            if old_env is None:
+                os.environ.pop("SARIGAMA_ENV", None)
+            else:
+                os.environ["SARIGAMA_ENV"] = old_env
+
+    def test_verify_api_key_fails_closed_in_production_when_unconfigured(self) -> None:
+        """Header verifier in production mode must fail closed when API key is unset."""
+
+        import os
+
+        old_env = os.environ.get("SARIGAMA_ENV")
+        try:
+            os.environ["SARIGAMA_ENV"] = "production"
+            set_api_key(None)
+            with self.assertRaises(HTTPException) as ctx:
+                asyncio.run(verify_api_key(authorization=None))
+            self.assertEqual(500, ctx.exception.status_code)
+            self.assertIn("API key required in production", ctx.exception.detail)
+        finally:
+            if old_env is None:
+                os.environ.pop("SARIGAMA_ENV", None)
+            else:
+                os.environ["SARIGAMA_ENV"] = old_env
+
+    def test_verify_token_handles_non_string_ai_token_safely(self) -> None:
+        """Non-string ai_token should be rejected with 401 without type errors."""
+
+        set_api_key("secret")
+        with self.assertRaises(HTTPException) as ctx:
+            verify_token_from_request(body={"ai_token": 12345}, authorization=None)
+        self.assertEqual(401, ctx.exception.status_code)
+        self.assertEqual("Invalid ai_token", ctx.exception.detail)
+
 
 if __name__ == "__main__":
     unittest.main()

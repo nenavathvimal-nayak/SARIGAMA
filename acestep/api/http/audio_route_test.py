@@ -70,6 +70,31 @@ class AudioRouteTests(unittest.TestCase):
             asyncio.run(endpoint(path=str(Path.cwd()), request=request, _=None))
         self.assertEqual(404, ctx.exception.status_code)
 
+    def test_rejects_non_audio_extension(self):
+        """Audio route should reject non-audio file extensions with HTTP 400."""
+
+        app = FastAPI()
+        allowed_dir = Path.cwd() / "__allowed_audio_dir__"
+        allowed_dir.mkdir(parents=True, exist_ok=True)
+        dummy_file = allowed_dir / "secret.env"
+        dummy_file.write_text("API_SECRET=123")
+        try:
+            app.state.temp_audio_dir = str(allowed_dir)
+            register_audio_route(app=app, verify_api_key=_verify_api_key)
+            endpoint = _get_endpoint(app, "/v1/audio", "GET")
+            request = type("Req", (), {"app": app})()
+
+            with self.assertRaises(HTTPException) as ctx:
+                asyncio.run(endpoint(path=str(dummy_file), request=request, _=None))
+            self.assertEqual(400, ctx.exception.status_code)
+            self.assertEqual("Invalid audio file type", ctx.exception.detail)
+        finally:
+            try:
+                dummy_file.unlink(missing_ok=True)
+                allowed_dir.rmdir()
+            except OSError:
+                pass
+
 
 if __name__ == "__main__":
     unittest.main()
