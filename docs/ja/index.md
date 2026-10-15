@@ -1,12 +1,12 @@
 ---
 layout: home
 hero:
-  name: ACE-Step 1.5
-  text: オープンソース音楽生成
+  name: DHAVLO MI
+  text: DHAAVLO MUSICAL INTELLIGENCE
   tagline: コンシューマーハードウェアで商用グレードの音楽生成。A100で1曲2秒未満、VRAM 4GB未満。
   image:
     src: /logo.png
-    alt: ACE-Step
+    alt: DHAVLO MI
   actions:
     - theme: brand
       text: インストール

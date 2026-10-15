@@ -1,4 +1,7 @@
-<h1 align="center">🎵 DHAAVLO MUSICAL INTELLIGENCE</h1>
+<p align="center">
+    <img src="./assets/dhavlo_mi_icon.png" width="140" height="140" alt="DHAAVLO MUSICAL INTELLIGENCE (DHAVLO MI) Logo">
+</p>
+<h1 align="center">DHAAVLO MUSICAL INTELLIGENCE</h1>
 <h3 align="center">DHAVLO MI — AI-Powered Music Intelligence and Generation Platform</h3>
 <p align="center">
     <b>Transform text descriptions, emotions, and lyrics into studio-quality musical compositions.</b>

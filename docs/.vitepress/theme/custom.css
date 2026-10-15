@@ -39,9 +39,9 @@
   }
 }
 
-/* Nav logo: invert on light mode (logo is white-on-black) */
+/* Nav logo: keep authentic colors */
 :root .VPNavBarTitle .logo {
-  filter: invert(1);
+  filter: none;
 }
 .dark .VPNavBarTitle .logo {
   filter: none;
